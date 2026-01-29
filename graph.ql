@@ -1,9 +1,10 @@
 import go
 
-from CallExpr call, Function caller, Function callee 
+from CallExpr call, FuncDef caller, Function callee
 where
-    caller = call.getEnclosingFunction().asFunction() and
+    caller = call.getEnclosingFunction() and
     callee = call.getTarget()
-select 
-    caller.getQualifiedName() as source,
+select
+    caller.getName() as source,
     callee.getQualifiedName() as target
+
