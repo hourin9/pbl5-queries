@@ -79,3 +79,8 @@ node_modules/
 
 # Mergetool files
 *.orig
+
+# Project related things
+workspace/
+*.bin*
+*.csv
