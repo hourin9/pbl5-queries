@@ -8,7 +8,7 @@ def long_name(func: Method): Boolean = long_name(func.name)
 
 def long_method(func: Method): Boolean =
 {
-    val THRESHOLD = 100
+    val THRESHOLD = 120
     return func.numberOfLines >= THRESHOLD
 }
 
