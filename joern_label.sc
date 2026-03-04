@@ -12,6 +12,9 @@ def long_method(func: Method): Boolean =
     return func.numberOfLines >= THRESHOLD
 }
 
+def long_param_list(func: Method) =
+    func.parameter.length > 4
+
 @main def main(cpgFile: String, project: String) =
 {
     importCpg(cpgFile)
@@ -22,6 +25,7 @@ def long_method(func: Method): Boolean =
             val smell_type =
                 if (long_name(m)) { 1 }
                 else if (long_method(m)) { 2 }
+                else if (long_param_list(m)) { 3 }
                 else { 0 }
             println(s"\"$project\",${m.id},\"${m.name}\",$smell_type")
         }
