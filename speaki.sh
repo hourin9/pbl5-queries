@@ -26,7 +26,8 @@ parse() {
 
     for i in $@; do
         joern-parse $i --language c \
-            -o ".speaki/$(basename "$i").cpg.bin"
+            -o ".speaki/$(basename "$i").cpg.bin" \
+            2> /dev/null 1>/dev/null
     done
 }
 
