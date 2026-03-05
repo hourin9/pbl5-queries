@@ -31,6 +31,13 @@ parse() {
     done
 }
 
+distribute() {
+    local cur=$(pwd)
+    pushd .speaki > /dev/null
+    tar cvf - * | gzip -9 - > "$cur/dataset.tar.gz"
+    popd > /dev/null
+}
+
 mkdir -p .speaki
 func=$1; shift; $func "$@"
 
