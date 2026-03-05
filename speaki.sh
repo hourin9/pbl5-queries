@@ -10,7 +10,7 @@ build-one-dataset() {
         --script joern_label.sc \
         --param cpgFile=.speaki/"$name".cpg.bin \
         --param project="$name" \
-        > .speaki/thing.csv 2> /dev/null
+        2> /dev/null | grep -v "^\[" >> .speaki/thing.csv
 }
 
 build-dataset() {
