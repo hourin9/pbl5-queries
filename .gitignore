@@ -85,3 +85,4 @@ workspace/
 *.bin*
 *.csv
 .speaki/
+*.tar.gz
