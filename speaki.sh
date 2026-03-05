@@ -8,9 +8,9 @@ build-one-dataset() {
 
     joern --batch --nocolors \
         --script joern_label.sc \
-        --param cpgFile="$name".cpg.bin \
+        --param cpgFile=.speaki/"$name".cpg.bin \
         --param project="$name" \
-        > thing.csv 2> /dev/null
+        > .speaki/thing.csv 2> /dev/null
 }
 
 build-dataset() {
@@ -26,9 +26,10 @@ parse() {
 
     for i in $@; do
         joern-parse $i --language c \
-            -o "$(basename "$i").cpg.bin"
+            -o ".speaki/$(basename "$i").cpg.bin"
     done
 }
 
+mkdir -p .speaki
 func=$1; shift; $func "$@"
 

@@ -84,3 +84,4 @@ node_modules/
 workspace/
 *.bin*
 *.csv
+.speaki/
