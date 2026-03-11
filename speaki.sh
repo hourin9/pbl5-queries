@@ -43,7 +43,13 @@ distribute() {
 
 init() {
     mkdir -p .speaki/
-    echo project,cpg_id,method_name,long_name,long_method,long_param_lists > .speaki/thing.csv
+
+    # dm bash
+    echo project,cpg_id,method_name,\
+long_name,\
+long_method,\
+long_param_lists\
+        > .speaki/thing.csv
 }
 
 mkdir -p .speaki
