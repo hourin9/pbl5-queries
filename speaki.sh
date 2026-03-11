@@ -2,15 +2,18 @@
 
 build-one-dataset() {
     local name=$(basename "$1")
-    if [ ! -f $name ]; then
+    local cpg_path=".speaki/$name.cpg.bin"
+    if [ ! -f "$cpg_path" ]; then
         parse $1
     fi
+    echo Parsed $name
 
     joern --batch --nocolors \
         --script joern_label.sc \
         --param cpgFile=.speaki/"$name".cpg.bin \
         --param project="$name" \
         2> /dev/null | grep -v "^\[" >> .speaki/thing.csv
+    echo Processed $name
 }
 
 build-dataset() {
