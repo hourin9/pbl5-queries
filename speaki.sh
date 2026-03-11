@@ -38,6 +38,11 @@ distribute() {
     popd > /dev/null
 }
 
+init() {
+    mkdir -p .speaki/
+    echo project,cpg_id,method_name,long_name,long_method,long_param_lists > .speaki/thing.csv
+}
+
 mkdir -p .speaki
 func=$1; shift; $func "$@"
 
