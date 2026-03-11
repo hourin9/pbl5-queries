@@ -22,12 +22,17 @@ def long_param_list(func: Method) =
     cpg.method
         .filterNot(m => m.isExternal || m.name.startsWith("<"))
         .foreach { m =>
-            val smell_type =
-                if (long_name(m)) { 1 }
-                else if (long_method(m)) { 2 }
-                else if (long_param_list(m)) { 3 }
-                else { 0 }
-            println(s"\"$project\",${m.id},\"${m.name}\",$smell_type")
+            val smell = List(
+                long_name(m),
+                long_method(m),
+                long_param_list(m)
+            )
+
+            val smell_str = smell
+                .map(if (_) 1 else 0 )
+                .mkString(",")
+
+            println(s"\"$project\",${m.id},\"${m.name}\",$smell_str")
         }
 }
 
