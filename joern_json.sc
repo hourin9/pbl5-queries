@@ -1,5 +1,8 @@
 def map_json_properties(m: Method) =
-    Map("id" -> m.id, "code" -> m.code)
+    Map("id" -> m.id
+        , "code" -> m.code
+        , "calls" -> m.callee.id.l
+    )
 
 @main def main(cpgFile: String) =
 {
