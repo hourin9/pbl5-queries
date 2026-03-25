@@ -8,11 +8,22 @@ build-one-dataset() {
     fi
     echo Parsed $name
 
+    # joern --batch --nocolors \
+    #     --script joern_label.sc \
+    #     --param cpgFile=.speaki/"$name".cpg.bin \
+    #     --param project="$name" \
+    #     2> /dev/null | grep -v "^\[" >> .speaki/thing.csv
+
+    temp=$(mktemp)
+
     joern --batch --nocolors \
-        --script joern_label.sc \
-        --param cpgFile=.speaki/"$name".cpg.bin \
-        --param project="$name" \
-        2> /dev/null | grep -v "^\[" >> .speaki/thing.csv
+        --script joern_json.sc \
+        --param cpgFile=.speaki/"$name.cpg.bin" \
+        2> /dev/null > "$temp"
+
+    tail -n +2 "$temp" > ".speaki/$name.json"
+
+    rm "$temp"
     echo Processed $name
 }
 
