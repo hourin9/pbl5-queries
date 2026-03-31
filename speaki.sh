@@ -1,5 +1,7 @@
 #!/bin/bash
 
+JOERN_SCRIPT="${JOERN_SCRIPT:-joern_json.sc}"
+
 build-one-dataset() {
     local name=$(basename "$1")
     local cpg_path=".speaki/$name.cpg.bin"
@@ -17,7 +19,7 @@ build-one-dataset() {
     temp=$(mktemp)
 
     joern --batch --nocolors \
-        --script joern_json.sc \
+        --script "$JOERN_SCRIPT" \
         --param cpgFile=.speaki/"$name.cpg.bin" \
         2> /dev/null > "$temp"
 
