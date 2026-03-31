@@ -52,6 +52,21 @@ distribute() {
     popd > /dev/null
 }
 
+batch() {
+    local repo=$(realpath $1)
+    local dir_list=()
+    pushd .speaki > /dev/null
+    while IFS= read -r repo_url || [ -n "$repo_url" ]; do
+        [[ -z "$repo_url"  ]] && continue
+        echo "$repo_url"
+        dir_name=$(basename "$repo_url" .git)
+        dir_list+=("$dir_name")
+        git clone --depth 1 "$repo_url"
+    done < "$repo"
+    popd > /dev/null
+    build-dataset "${dir_list[@]/#/.speaki/}"
+}
+
 init() {
     mkdir -p .speaki/
 
