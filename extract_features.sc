@@ -2,10 +2,10 @@ import io.shiftleft.semanticcpg.language._
 import ujson._
 
 @main def main(cpgFile: String = "cpg.bin"): Unit = {
-  println(s"Đang nạp CPG từ file: $cpgFile...")
+  // println(s"Đang nạp CPG từ file: $cpgFile...")
   importCpg(cpgFile)
 
-  println("Đang trích xuất Node Features...")
+  // println("Đang trích xuất Node Features...")
   // 1. Khởi tạo danh sách chứa dữ liệu các node (hàm)
   val allMethods = cpg.method.filterNot(m => m.isExternal || m.name.startsWith("<"))
   val nodesData = allMethods.map { method =>
@@ -31,7 +31,7 @@ import ujson._
     )
   }.l
 
-  println("Đang trích xuất Edges (Call Graph)...")
+  // println("Đang trích xuất Edges (Call Graph)...")
   val edgesData = cpg.call.map { call =>
     Obj(
       "source_id" -> call.method.id.toString,
@@ -47,11 +47,5 @@ import ujson._
   )
 
   // 4. Ghi trực tiếp ra file bằng Scala
-  val outputFile = "graph_dataset.json"
-  val out = new java.io.PrintWriter(outputFile)
-  out.println(ujson.write(finalJson, indent = 2))
-  out.close()
-
-  println(s"HOÀN THÀNH! Đã xuất ${nodesData.length} nodes và ${edgesData.length} edges.")
-  println(s"Dữ liệu được lưu tại: $outputFile")
+  println(ujson.write(finalJson, indent = 2))
 }
