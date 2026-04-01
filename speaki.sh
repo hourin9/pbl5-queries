@@ -81,5 +81,6 @@ long_param_lists\
 }
 
 mkdir -p .speaki
+echo "Script file is $JOERN_SCRIPT"
 func=$1; shift; $func "$@"
 
