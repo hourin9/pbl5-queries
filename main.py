@@ -87,7 +87,7 @@ def process_single_repo(repo_url):
         # 3. Scala Extract
         if os.path.exists(cpg_file):
             run_shell_command(
-                f"joern --script extract_features_b.sc --param cpgPath={os.path.abspath(cpg_file)} "
+                f"joern --script extract_features.sc --param cpgPath={os.path.abspath(cpg_file)} "
                 f"--param outPath={os.path.abspath(joern_json_out)}",
                 repo_name,
             )
