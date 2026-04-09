@@ -7,7 +7,7 @@ Các module đã chuyển sang tận dụng triệt để hệ sinh thái từ b
 ## 1. Những thay đổi chính (Architecture)
 
 1. **Utils/State Manager (`sqlite3`)**:
-    Việc theo dõi trạng thái tiến trình clone và sinh metrics được lưu vào local database `data/state.db`. Giúp tự động Self-Healing (chạy lại những repo bị lỗi mạng hoặc API limit bị ngắt nản chừng).
+    Việc theo dõi trạng thái tiến trình clone và sinh metrics được lưu vào local database `data/state.db`. Giúp tự động Self-Healing (chạy lại những repo bị lỗi mạng hoặc API limit bị ngắt nuwax chừng).
     
 2. **Phase 1: Async Scraping**:
     - Dùng `aiohttp` để query GitHub API bất đồng bộ.
@@ -16,7 +16,7 @@ Các module đã chuyển sang tận dụng triệt để hệ sinh thái từ b
 
 3. **Phase 2: Hybrid Multiprocessing & Server Client**:
     - Sử dụng `multiprocessing` quét lịch sử Git qua `pydriller` (nặng tải xử lý CPU).
-    - Sử dụng `cpgqls-client` nối với cổng `9000` của Joern thay vì spawn `joern-parse` nhiều lần trong Bash script, tiết kiệm rất nhiều Overhead (thời gian khởi động JVM tốn khoảng 5s-10s mỗi repo trước đây).
+    - Sử dụng `cpgqls-client` nối với cổng `8080` của Joern thay vì spawn `joern-parse` nhiều lần trong Bash script, tiết kiệm rất nhiều Overhead (thời gian khởi động JVM tốn khoảng 5s-10s mỗi repo trước đây).
     - Dùng Async Lock chặn tránh tương tác đồng thời vào một instance workspace duy nhất của Joern, đảm bảo server không báo lỗi Override Workspace.
 
 4. **Phase 3: AI Synthesis qua DeepSeek**:

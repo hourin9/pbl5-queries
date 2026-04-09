@@ -1733,3 +1733,989 @@ val allMethods: List[io.shiftleft.codepropertygraph.generated.nodes.Method] = Li
 2026-04-08 19:18:12.315 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
 2026-04-08 19:18:12.316 | INFO     | pipeline.phase4_validation:run_phase4_validation:57 - Phase 4: Bắt đầu Validating logic cho 41 repository.
 2026-04-08 19:18:12.570 | INFO     | pipeline.phase4_validation:run_phase4_validation:100 - Hoàn thành Giai đoạn 4 (QA & Refinement).
+2026-04-09 12:42:47.599 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 12:42:47.599 | INFO     | __main__:main:24 - 🚀 Running in API mode for AI Labeling
+2026-04-09 12:42:47.599 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 12:42:47.599 | INFO     | pipeline.phase1_acquisition:crawl_repositories:80 - Đang fetch repositories với query: language:java management system
+2026-04-09 12:42:50.626 | ERROR    | pipeline.phase1_acquisition:fetch_repos_page:50 - Lỗi truy vấn GitHub: 401
+2026-04-09 12:42:56.672 | ERROR    | pipeline.phase1_acquisition:fetch_repos_page:50 - Lỗi truy vấn GitHub: 401
+2026-04-09 12:43:00.408 | WARNING  | __main__:<module>:59 - Pipeline bị dừng bởi người dùng.
+2026-04-09 12:45:57.742 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 12:45:57.743 | INFO     | __main__:main:24 - 🚀 Running in API mode for AI Labeling
+2026-04-09 12:45:57.743 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 12:45:57.743 | INFO     | pipeline.phase1_acquisition:crawl_repositories:107 - Đang fetch repositories với query: language:java management system
+2026-04-09 12:45:59.298 | ERROR    | pipeline.phase1_acquisition:fetch_repos_page:63 - Lỗi truy vấn GitHub: 401
+2026-04-09 12:46:05.693 | ERROR    | pipeline.phase1_acquisition:fetch_repos_page:63 - Lỗi truy vấn GitHub: 401
+2026-04-09 12:46:07.049 | WARNING  | __main__:<module>:59 - Pipeline bị dừng bởi người dùng.
+2026-04-09 12:46:39.959 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 12:46:39.959 | INFO     | __main__:main:24 - 🚀 Running in API mode for AI Labeling
+2026-04-09 12:46:39.959 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 12:46:39.959 | INFO     | pipeline.phase1_acquisition:crawl_repositories:107 - Đang fetch repositories với query: language:java management system
+2026-04-09 12:46:42.657 | ERROR    | pipeline.phase1_acquisition:fetch_repos_page:64 - Lỗi truy vấn GitHub: 401
+2026-04-09 12:46:43.261 | WARNING  | __main__:<module>:59 - Pipeline bị dừng bởi người dùng.
+2026-04-09 12:47:03.005 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 12:47:03.006 | INFO     | __main__:main:24 - 🚀 Running in API mode for AI Labeling
+2026-04-09 12:47:03.006 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 12:47:03.006 | INFO     | pipeline.phase1_acquisition:crawl_repositories:107 - Đang fetch repositories với query: language:java management system
+2026-04-09 12:47:05.453 | ERROR    | pipeline.phase1_acquisition:fetch_repos_page:64 - Lỗi truy vấn GitHub: 401
+2026-04-09 12:47:05.899 | WARNING  | __main__:<module>:59 - Pipeline bị dừng bởi người dùng.
+2026-04-09 12:50:59.708 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 12:50:59.709 | INFO     | __main__:main:24 - 🚀 Running in API mode for AI Labeling
+2026-04-09 12:50:59.709 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 12:50:59.709 | INFO     | pipeline.phase1_acquisition:crawl_repositories:107 - Đang fetch repositories với query: language:java management system
+2026-04-09 12:51:07.751 | INFO     | pipeline.phase1_acquisition:crawl_repositories:107 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 12:51:14.096 | INFO     | pipeline.phase1_acquisition:crawl_repositories:107 - Đang fetch repositories với query: language:java database engine
+2026-04-09 12:51:14.823 | WARNING  | __main__:<module>:59 - Pipeline bị dừng bởi người dùng.
+2026-04-09 12:51:26.617 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 12:51:26.617 | INFO     | __main__:main:24 - 🚀 Running in API mode for AI Labeling
+2026-04-09 12:51:26.617 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 12:51:26.617 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 12:51:34.267 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 12:51:41.098 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 12:51:47.355 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 12:51:47.356 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 12:51:47.356 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 12:51:47.356 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 12:51:47.356 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 12:51:47.356 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 10 repos.
+2026-04-09 12:51:47.357 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 12:51:47.357 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 12:51:47.357 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 12:51:47.364 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone pinpoint...
+2026-04-09 12:51:47.365 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo pinpoint đã tồn tại, skip clone.
+2026-04-09 12:51:47.370 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone Activiti...
+2026-04-09 12:51:47.371 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo Activiti đã tồn tại, skip clone.
+2026-04-09 12:51:47.376 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone flowable-engine...
+2026-04-09 12:51:47.377 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo flowable-engine đã tồn tại, skip clone.
+2026-04-09 12:51:47.383 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone restcommander...
+2026-04-09 12:51:47.383 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo restcommander đã tồn tại, skip clone.
+2026-04-09 12:51:47.389 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone DeepfakeHTTP...
+2026-04-09 12:51:47.390 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo DeepfakeHTTP đã tồn tại, skip clone.
+2026-04-09 12:51:47.395 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone android-http-server...
+2026-04-09 12:51:47.396 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo android-http-server đã tồn tại, skip clone.
+2026-04-09 12:51:47.401 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone fluent-http...
+2026-04-09 12:51:47.402 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo fluent-http đã tồn tại, skip clone.
+2026-04-09 12:51:47.407 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone trino...
+2026-04-09 12:51:47.407 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo trino đã tồn tại, skip clone.
+2026-04-09 12:51:47.414 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone starrocks...
+2026-04-09 12:51:47.414 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo starrocks đã tồn tại, skip clone.
+2026-04-09 12:51:47.420 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 12:51:47.421 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 12:51:47.421 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:148 - Phase 2: Bắt đầu xử lý 44 repository.
+2026-04-09 12:51:47.502 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [C-Plus-Plus] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_C-Plus-Plus.json
+2026-04-09 12:51:47.531 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.543 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [cosmos] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_cosmos.json
+2026-04-09 12:51:47.546 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.560 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [MyTinySTL] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_MyTinySTL.json
+2026-04-09 12:51:47.564 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.576 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [trader] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_trader.json
+2026-04-09 12:51:47.578 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.592 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [tbox] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_tbox.json
+2026-04-09 12:51:47.595 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.608 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [klib] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_klib.json
+2026-04-09 12:51:47.611 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.625 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [BlackHole] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_BlackHole.json
+2026-04-09 12:51:47.628 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.641 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [winfsp] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_winfsp.json
+2026-04-09 12:51:47.644 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.656 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [dokany] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_dokany.json
+2026-04-09 12:51:47.658 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.671 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [openrazer] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_openrazer.json
+2026-04-09 12:51:47.674 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.686 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [ViGEmBus] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_ViGEmBus.json
+2026-04-09 12:51:47.688 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.701 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [psycopg2] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_psycopg2.json
+2026-04-09 12:51:47.704 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.717 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [TitanHide] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_TitanHide.json
+2026-04-09 12:51:47.720 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.733 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [keycloak] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_keycloak.json
+2026-04-09 12:51:47.736 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.750 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [nacos] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_nacos.json
+2026-04-09 12:51:47.753 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.765 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 12:51:47.768 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.781 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [thingsboard] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_thingsboard.json
+2026-04-09 12:51:47.784 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.797 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [ip2region] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_ip2region.json
+2026-04-09 12:51:47.800 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.812 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [pinpoint] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_pinpoint.json
+2026-04-09 12:51:47.814 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.827 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [kafka-ui] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_kafka-ui.json
+2026-04-09 12:51:47.829 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.843 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [Activiti] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_Activiti.json
+2026-04-09 12:51:47.848 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.861 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [flowable-engine] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_flowable-engine.json
+2026-04-09 12:51:47.864 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.878 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [graylog2-server] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_graylog2-server.json
+2026-04-09 12:51:47.881 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.896 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [pig] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_pig.json
+2026-04-09 12:51:47.899 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.911 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [Bastillion] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_Bastillion.json
+2026-04-09 12:51:47.914 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.926 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [restcommander] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_restcommander.json
+2026-04-09 12:51:47.929 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.943 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [DeepfakeHTTP] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_DeepfakeHTTP.json
+2026-04-09 12:51:47.946 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.958 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [android-http-server] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_android-http-server.json
+2026-04-09 12:51:47.961 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.974 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [fluent-http] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_fluent-http.json
+2026-04-09 12:51:47.977 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:47.989 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [trino] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_trino.json
+2026-04-09 12:51:47.992 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:48.005 | DEBUG    | pipeline.phase2_engineering:extract_features:88 - [starrocks] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_starrocks.json
+2026-04-09 12:51:48.007 | ERROR    | pipeline.phase2_engineering:extract_features:110 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 9000, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 9000)
+2026-04-09 12:51:48.020 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:216 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 12:51:48.020 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 12:51:48.021 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:200 - Không có Repos nào chờ AI Phase 3.
+2026-04-09 12:51:48.021 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 12:51:48.021 | INFO     | pipeline.phase4_validation:run_phase4_validation:54 - Không có Repos nào chờ Phase 4.
+2026-04-09 12:52:45.424 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 12:52:45.425 | INFO     | __main__:main:24 - 🚀 Running in API mode for AI Labeling
+2026-04-09 12:52:45.425 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 12:52:45.425 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 12:52:57.855 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 12:53:04.673 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 12:53:11.492 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 12:53:11.493 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 12:53:11.493 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 12:53:11.493 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 12:53:11.493 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 12:53:11.494 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 10 repos.
+2026-04-09 12:53:11.495 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 12:53:11.495 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 12:53:11.495 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 12:53:11.503 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone pinpoint...
+2026-04-09 12:53:11.504 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo pinpoint đã tồn tại, skip clone.
+2026-04-09 12:53:11.510 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone Activiti...
+2026-04-09 12:53:11.510 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo Activiti đã tồn tại, skip clone.
+2026-04-09 12:53:11.516 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone flowable-engine...
+2026-04-09 12:53:11.516 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo flowable-engine đã tồn tại, skip clone.
+2026-04-09 12:53:11.521 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone restcommander...
+2026-04-09 12:53:11.522 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo restcommander đã tồn tại, skip clone.
+2026-04-09 12:53:11.528 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone DeepfakeHTTP...
+2026-04-09 12:53:11.529 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo DeepfakeHTTP đã tồn tại, skip clone.
+2026-04-09 12:53:11.535 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone android-http-server...
+2026-04-09 12:53:11.535 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo android-http-server đã tồn tại, skip clone.
+2026-04-09 12:53:11.541 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone fluent-http...
+2026-04-09 12:53:11.541 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo fluent-http đã tồn tại, skip clone.
+2026-04-09 12:53:11.547 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone trino...
+2026-04-09 12:53:11.547 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo trino đã tồn tại, skip clone.
+2026-04-09 12:53:11.552 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone starrocks...
+2026-04-09 12:53:11.553 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo starrocks đã tồn tại, skip clone.
+2026-04-09 12:53:11.559 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 12:53:11.559 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 12:53:11.560 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 44 repository.
+2026-04-09 12:53:11.633 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [C-Plus-Plus] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_C-Plus-Plus.json
+2026-04-09 12:53:25.437 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [cosmos] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_cosmos.json
+2026-04-09 12:53:25.437 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/C-Plus-Plus
+2026-04-09 12:53:38.274 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [MyTinySTL] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_MyTinySTL.json
+2026-04-09 12:53:38.275 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/cosmos
+2026-04-09 12:53:49.157 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [trader] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_trader.json
+2026-04-09 12:53:49.158 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/MyTinySTL
+2026-04-09 12:53:55.277 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [tbox] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_tbox.json
+2026-04-09 12:53:55.278 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/trader
+2026-04-09 12:54:13.722 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [klib] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_klib.json
+2026-04-09 12:54:13.723 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/tbox
+2026-04-09 12:54:18.301 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [BlackHole] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_BlackHole.json
+2026-04-09 12:54:18.301 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/klib
+2026-04-09 12:54:21.516 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [winfsp] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_winfsp.json
+2026-04-09 12:54:21.517 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/BlackHole
+2026-04-09 12:54:30.755 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [dokany] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_dokany.json
+2026-04-09 12:54:30.756 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/winfsp
+2026-04-09 12:54:36.931 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [openrazer] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_openrazer.json
+2026-04-09 12:54:36.932 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/dokany
+2026-04-09 12:54:42.665 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [ViGEmBus] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_ViGEmBus.json
+2026-04-09 12:54:42.666 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/openrazer
+2026-04-09 12:54:45.435 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [psycopg2] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_psycopg2.json
+2026-04-09 12:54:45.435 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/ViGEmBus
+2026-04-09 12:54:49.735 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [TitanHide] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_TitanHide.json
+2026-04-09 12:54:49.736 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/psycopg2
+2026-04-09 12:54:53.995 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [keycloak] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_keycloak.json
+2026-04-09 12:54:53.995 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/TitanHide
+2026-04-09 12:56:04.379 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [nacos] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_nacos.json
+2026-04-09 12:56:04.379 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/keycloak
+2026-04-09 12:56:34.608 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 12:56:34.609 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/nacos
+2026-04-09 12:56:44.151 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [thingsboard] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_thingsboard.json
+2026-04-09 12:56:44.151 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 12:57:05.751 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [ip2region] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_ip2region.json
+2026-04-09 12:57:09.289 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [pinpoint] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_pinpoint.json
+2026-04-09 12:57:09.290 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/ip2region
+2026-04-09 12:57:46.427 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [kafka-ui] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_kafka-ui.json
+2026-04-09 12:57:46.427 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/pinpoint
+2026-04-09 12:58:02.708 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [Activiti] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_Activiti.json
+2026-04-09 12:58:02.709 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/kafka-ui
+2026-04-09 12:58:27.503 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [flowable-engine] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_flowable-engine.json
+2026-04-09 12:58:27.506 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/Activiti
+2026-04-09 12:59:33.392 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [graylog2-server] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_graylog2-server.json
+2026-04-09 12:59:33.395 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/flowable-engine
+2026-04-09 13:00:26.195 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [pig] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_pig.json
+2026-04-09 13:00:26.198 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/graylog2-server
+2026-04-09 13:01:03.414 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [Bastillion] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_Bastillion.json
+2026-04-09 13:01:09.122 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [restcommander] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_restcommander.json
+2026-04-09 13:01:09.125 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/Bastillion
+2026-04-09 13:01:47.253 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [DeepfakeHTTP] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_DeepfakeHTTP.json
+2026-04-09 13:01:47.257 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/restcommander
+2026-04-09 13:01:52.958 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [android-http-server] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_android-http-server.json
+2026-04-09 13:01:52.961 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/DeepfakeHTTP
+2026-04-09 13:01:57.993 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [fluent-http] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_fluent-http.json
+2026-04-09 13:01:57.996 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/android-http-server
+2026-04-09 13:02:03.328 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [trino] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_trino.json
+2026-04-09 13:02:03.331 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/fluent-http
+2026-04-09 13:02:47.368 | INFO     | pipeline.phase2_engineering:process_one:222 - Repo restcommander: Sinh 0 methods dataset qua Phase 2.
+2026-04-09 13:04:39.583 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [starrocks] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_starrocks.json
+2026-04-09 13:04:39.587 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/trino
+2026-04-09 13:08:33.068 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/starrocks
+2026-04-09 13:08:33.228 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:232 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 13:08:33.230 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 13:08:33.231 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:200 - Không có Repos nào chờ AI Phase 3.
+2026-04-09 13:08:33.231 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 13:08:33.234 | INFO     | pipeline.phase4_validation:run_phase4_validation:54 - Không có Repos nào chờ Phase 4.
+2026-04-09 13:36:25.225 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 13:36:25.226 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 13:36:25.226 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 13:36:25.226 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 13:36:30.404 | WARNING  | __main__:<module>:59 - Pipeline bị dừng bởi người dùng.
+2026-04-09 13:39:24.321 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 13:39:24.321 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 13:39:24.322 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 13:39:24.322 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 13:39:36.049 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 13:39:36.050 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 13:39:36.050 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 13:39:36.050 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 13:39:36.050 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 13:39:36.050 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 13:39:36.050 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 13:39:36.051 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 13:39:36.052 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 13:39:36.052 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 13:39:36.052 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 13:39:36.060 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 13:39:36.061 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 13:39:36.061 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 43 repository.
+2026-04-09 13:39:36.139 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [C-Plus-Plus] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_C-Plus-Plus.json
+2026-04-09 13:39:50.654 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [cosmos] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_cosmos.json
+2026-04-09 13:39:50.656 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/C-Plus-Plus
+2026-04-09 13:40:05.178 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [MyTinySTL] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_MyTinySTL.json
+2026-04-09 13:40:05.179 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/cosmos
+2026-04-09 13:40:09.873 | WARNING  | __main__:<module>:59 - Pipeline bị dừng bởi người dùng.
+2026-04-09 13:40:20.095 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 13:40:20.095 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 13:40:20.095 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 13:40:20.096 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 13:40:29.275 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 13:40:29.276 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 13:40:29.276 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 13:40:29.276 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 13:40:29.276 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 13:40:29.276 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 13:40:29.276 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 13:40:29.277 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 13:40:29.278 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 13:40:29.278 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 13:40:29.278 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 13:40:29.292 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 13:40:29.292 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 13:40:29.293 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 13:40:29.295 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 13:40:40.330 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 13:40:40.368 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:232 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 13:40:40.368 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 13:40:40.369 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:206 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 13:40:40.369 | ERROR    | pipeline.phase3_synthesis:__init__:75 - Thư viện 'camoufox' chưa được cài đặt. Hãy chạy: pip install camoufox
+2026-04-09 13:40:40.377 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:272 - Hoàn thành Giai đoạn 3 (AI Synthesis).
+2026-04-09 13:40:40.377 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 13:40:40.378 | INFO     | pipeline.phase4_validation:run_phase4_validation:57 - Phase 4: Bắt đầu Validating logic cho 1 repository.
+2026-04-09 13:40:40.384 | INFO     | pipeline.phase4_validation:run_phase4_validation:100 - Hoàn thành Giai đoạn 4 (QA & Refinement).
+2026-04-09 13:40:40.384 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 13:40:55.099 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 13:40:55.100 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 13:40:55.100 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 13:40:55.100 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 13:41:08.390 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 13:41:08.391 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 13:41:08.391 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 13:41:08.391 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 13:41:08.391 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 13:41:08.391 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 13:41:08.391 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 13:41:08.392 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 13:41:08.392 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 13:41:08.392 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 13:41:08.393 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 13:41:08.399 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 13:41:08.399 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 13:41:08.399 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 13:41:08.401 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 13:41:17.920 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 13:41:17.961 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:232 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 13:41:17.961 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 13:41:17.962 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:203 - Không có Repos nào chờ AI Phase 3.
+2026-04-09 13:41:17.962 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 13:41:17.963 | INFO     | pipeline.phase4_validation:run_phase4_validation:54 - Không có Repos nào chờ Phase 4.
+2026-04-09 13:41:17.963 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 13:43:34.652 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 13:43:34.652 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 13:43:34.652 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 13:43:34.652 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 13:43:52.449 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 13:43:52.449 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 13:43:52.449 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 13:43:52.450 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 13:43:52.450 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 13:43:52.450 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 13:43:52.450 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 13:43:52.450 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 13:43:52.450 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 13:43:52.451 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 13:46:23.294 | INFO     | pipeline.phase1_acquisition:clone_repository:168 - Clone apollo thành công.
+2026-04-09 13:46:23.301 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 13:46:23.301 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 13:46:23.302 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 13:46:23.304 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 13:46:36.239 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 13:46:36.286 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:232 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 13:46:36.286 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 13:46:36.287 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:206 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 13:46:36.287 | ERROR    | pipeline.phase3_synthesis:__init__:75 - Thư viện 'camoufox' chưa được cài đặt. Hãy chạy: pip install camoufox
+2026-04-09 13:46:36.294 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:272 - Hoàn thành Giai đoạn 3 (AI Synthesis).
+2026-04-09 13:46:36.295 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 13:46:36.295 | INFO     | pipeline.phase4_validation:run_phase4_validation:57 - Phase 4: Bắt đầu Validating logic cho 1 repository.
+2026-04-09 13:46:36.302 | INFO     | pipeline.phase4_validation:run_phase4_validation:100 - Hoàn thành Giai đoạn 4 (QA & Refinement).
+2026-04-09 13:46:36.302 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 13:48:25.304 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 13:48:25.304 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 13:48:25.304 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 13:48:25.304 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 13:48:34.396 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 13:48:34.396 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 13:48:34.396 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 13:48:34.397 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 13:48:34.397 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 13:48:34.397 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 13:48:34.397 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 13:48:34.398 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 13:48:34.399 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 13:48:34.399 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 13:48:34.399 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 13:48:34.406 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 13:48:34.406 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 13:48:34.407 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 13:48:34.409 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 13:48:44.332 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 13:48:44.370 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:232 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 13:48:44.370 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 13:48:44.371 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:203 - Không có Repos nào chờ AI Phase 3.
+2026-04-09 13:48:44.371 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 13:48:44.371 | INFO     | pipeline.phase4_validation:run_phase4_validation:54 - Không có Repos nào chờ Phase 4.
+2026-04-09 13:48:44.372 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 13:49:08.889 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 13:49:08.889 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 13:49:08.889 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 13:49:08.889 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 13:49:20.734 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 13:49:20.735 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 13:49:20.735 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 13:49:20.735 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 13:49:20.735 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 13:49:20.735 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 13:49:20.735 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 13:49:20.737 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 13:49:20.738 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 13:49:20.738 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 13:49:20.738 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 13:49:20.760 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 13:49:20.760 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 13:49:20.760 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 13:49:20.762 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 13:49:30.244 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 13:49:30.285 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:232 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 13:49:30.285 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 13:49:30.286 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:206 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 13:49:30.293 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:272 - Hoàn thành Giai đoạn 3 (AI Synthesis).
+2026-04-09 13:49:30.293 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 13:49:30.294 | INFO     | pipeline.phase4_validation:run_phase4_validation:57 - Phase 4: Bắt đầu Validating logic cho 1 repository.
+2026-04-09 13:49:30.299 | INFO     | pipeline.phase4_validation:run_phase4_validation:100 - Hoàn thành Giai đoạn 4 (QA & Refinement).
+2026-04-09 13:49:30.300 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 13:51:09.031 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 13:51:09.032 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 13:51:09.032 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 13:51:09.033 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 13:51:17.624 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 13:51:17.624 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 13:51:17.624 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 13:51:17.624 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 13:51:17.624 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 13:51:17.625 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 13:51:17.625 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 13:51:17.625 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 13:51:17.625 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 13:51:17.626 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 13:51:17.626 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 13:51:17.632 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 13:51:17.633 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 13:51:17.633 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 13:51:17.634 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 13:51:27.377 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 13:51:27.418 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:232 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 13:51:27.419 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 13:51:27.419 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:206 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 13:51:27.426 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:272 - Hoàn thành Giai đoạn 3 (AI Synthesis).
+2026-04-09 13:51:27.427 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 13:51:27.427 | INFO     | pipeline.phase4_validation:run_phase4_validation:57 - Phase 4: Bắt đầu Validating logic cho 1 repository.
+2026-04-09 13:51:27.434 | INFO     | pipeline.phase4_validation:run_phase4_validation:100 - Hoàn thành Giai đoạn 4 (QA & Refinement).
+2026-04-09 13:51:27.434 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 13:51:54.373 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 13:51:54.373 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 13:51:54.373 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 13:51:54.373 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 13:52:04.658 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 13:52:04.658 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 13:52:04.658 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 13:52:04.658 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 13:52:04.658 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 13:52:04.658 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 13:52:04.658 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 13:52:04.659 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 13:52:04.659 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 13:52:04.659 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 13:52:04.659 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 13:52:04.667 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 13:52:04.667 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 13:52:04.667 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 13:52:04.669 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 13:52:15.290 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 13:52:15.334 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:232 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 13:52:15.335 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 13:52:15.336 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:206 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 13:52:15.343 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:272 - Hoàn thành Giai đoạn 3 (AI Synthesis).
+2026-04-09 13:52:15.343 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 13:52:15.344 | INFO     | pipeline.phase4_validation:run_phase4_validation:57 - Phase 4: Bắt đầu Validating logic cho 1 repository.
+2026-04-09 13:52:15.350 | INFO     | pipeline.phase4_validation:run_phase4_validation:100 - Hoàn thành Giai đoạn 4 (QA & Refinement).
+2026-04-09 13:52:15.350 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 13:56:31.745 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 13:56:31.745 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 13:56:31.745 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 13:56:31.745 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 13:56:42.173 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 13:56:42.174 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 13:56:42.174 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 13:56:42.174 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 13:56:42.174 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 13:56:42.174 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 13:56:42.174 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 13:56:42.175 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 13:56:42.175 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 13:56:42.175 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 13:56:42.175 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 13:56:42.182 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 13:56:42.182 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 13:56:42.182 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 13:56:42.184 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 13:56:51.788 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 13:56:51.826 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:246 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 13:56:51.827 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 13:56:51.828 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:203 - Không có Repos nào chờ AI Phase 3.
+2026-04-09 13:56:51.828 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 13:56:51.828 | INFO     | pipeline.phase4_validation:run_phase4_validation:54 - Không có Repos nào chờ Phase 4.
+2026-04-09 13:56:51.829 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 14:00:00.896 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 14:00:00.897 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 14:00:00.897 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 14:00:00.897 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 14:00:08.915 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 14:00:08.916 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 14:00:08.916 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 14:00:08.916 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 14:00:08.916 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 14:00:08.916 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 14:00:08.916 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 14:00:08.917 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 14:00:08.918 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 14:00:08.918 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 14:00:08.918 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 14:00:08.925 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 14:00:08.926 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 14:00:08.926 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:162 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 14:00:08.929 | INFO     | pipeline.phase2_engineering:process_one:198 - [apollo] Bước 1: Khởi chạy Joern trích xuất đặc trưng tĩnh...
+2026-04-09 14:00:08.929 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 14:00:18.215 | INFO     | pipeline.phase2_engineering:process_one:210 - [apollo] Joern tìm thấy 1287 methods tiềm năng.
+2026-04-09 14:00:18.215 | INFO     | pipeline.phase2_engineering:process_one:213 - [apollo] Bước 2: Khởi chạy PyDriller quét lịch sử commit...
+2026-04-09 14:00:18.245 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 14:00:18.271 | ERROR    | pipeline.phase2_engineering:process_one:219 - [apollo] PyDriller worker error: Cmd('git') failed due to: exit code(128)
+  cmdline: git diff-tree add571579259ecf59542aac3cad758511f79b0ce 8e4a73e49303537cd320ec2b975661862315306a -r --abbrev=40 --full-index -M -p --no-ext-diff --no-color
+2026-04-09 14:00:18.290 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:252 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 14:00:18.291 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 14:00:18.292 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:203 - Không có Repos nào chờ AI Phase 3.
+2026-04-09 14:00:18.292 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 14:00:18.292 | INFO     | pipeline.phase4_validation:run_phase4_validation:54 - Không có Repos nào chờ Phase 4.
+2026-04-09 14:00:18.293 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 14:05:23.526 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 14:05:23.526 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 14:05:23.526 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 14:05:23.527 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 14:05:32.605 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 14:05:32.606 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 14:05:32.606 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 14:05:32.606 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 14:05:32.606 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 14:05:32.606 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 14:05:32.606 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 14:05:32.607 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 14:05:32.607 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 14:05:32.607 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 14:05:32.608 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 14:05:32.615 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 14:05:32.615 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 14:05:32.615 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:169 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 14:05:32.618 | INFO     | pipeline.phase2_engineering:process_one:205 - [apollo] Bước 1: Khởi chạy Joern trích xuất đặc trưng tĩnh...
+2026-04-09 14:05:32.619 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 14:05:43.488 | INFO     | pipeline.phase2_engineering:process_one:217 - [apollo] Joern tìm thấy 1287 methods tiềm năng.
+2026-04-09 14:05:43.489 | INFO     | pipeline.phase2_engineering:process_one:220 - [apollo] Bước 2: Khởi chạy PyDriller quét lịch sử commit...
+2026-04-09 14:05:43.519 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 14:05:43.547 | ERROR    | pipeline.phase2_engineering:process_one:226 - [apollo] PyDriller worker error: Cmd('git') failed due to: exit code(128)
+  cmdline: git diff-tree add571579259ecf59542aac3cad758511f79b0ce 8e4a73e49303537cd320ec2b975661862315306a -r --abbrev=40 --full-index -M -p --no-ext-diff --no-color
+2026-04-09 14:05:43.562 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:259 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 14:05:43.562 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 14:05:43.563 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:203 - Không có Repos nào chờ AI Phase 3.
+2026-04-09 14:05:43.563 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 14:05:43.564 | INFO     | pipeline.phase4_validation:run_phase4_validation:54 - Không có Repos nào chờ Phase 4.
+2026-04-09 14:05:43.564 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 14:09:07.421 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 14:09:07.421 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 14:09:07.421 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 14:09:07.421 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 14:09:16.642 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 14:09:16.643 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 14:09:16.643 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 14:09:16.643 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 14:09:16.643 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 14:09:16.643 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 14:09:16.643 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 14:09:16.644 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 14:09:16.645 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 14:09:16.645 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 14:11:36.682 | INFO     | pipeline.phase1_acquisition:clone_repository:168 - Clone apollo thành công.
+2026-04-09 14:11:36.690 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 14:11:36.690 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 14:11:36.691 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:169 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 14:11:36.694 | INFO     | pipeline.phase2_engineering:process_one:205 - [apollo] Bước 1: Khởi chạy Joern trích xuất đặc trưng tĩnh...
+2026-04-09 14:11:36.694 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 14:11:46.189 | INFO     | pipeline.phase2_engineering:process_one:217 - [apollo] Joern tìm thấy 1287 methods tiềm năng.
+2026-04-09 14:11:46.189 | INFO     | pipeline.phase2_engineering:process_one:220 - [apollo] Bước 2: Khởi chạy PyDriller quét lịch sử commit...
+2026-04-09 14:11:46.214 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 14:11:46.244 | ERROR    | pipeline.phase2_engineering:process_one:226 - [apollo] PyDriller worker error: Cmd('git') failed due to: exit code(128)
+  cmdline: git diff-tree dc41c934349af28631cc5b2d9b2bdf75eac9d1f3 150955f0b0f8a479cc50bc096a83258f7f349c18 -r --abbrev=40 --full-index -M -p --no-ext-diff --no-color
+2026-04-09 14:11:46.264 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:259 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 14:11:46.264 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 14:11:46.265 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:203 - Không có Repos nào chờ AI Phase 3.
+2026-04-09 14:11:46.265 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 14:11:46.266 | INFO     | pipeline.phase4_validation:run_phase4_validation:54 - Không có Repos nào chờ Phase 4.
+2026-04-09 14:11:46.266 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 14:12:40.469 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 14:12:40.470 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 14:12:40.470 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 14:12:40.470 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 14:12:48.538 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 14:12:48.539 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 14:12:48.539 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 14:12:48.539 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 14:12:48.539 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 14:12:48.540 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 14:12:48.540 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 14:12:48.541 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 14:12:48.542 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 14:12:48.542 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 14:18:46.374 | INFO     | pipeline.phase1_acquisition:clone_repository:168 - Clone apollo thành công.
+2026-04-09 14:18:46.381 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 14:18:46.381 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 14:18:46.381 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:169 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 14:18:46.383 | INFO     | pipeline.phase2_engineering:process_one:205 - [apollo] Bước 1: Khởi chạy Joern trích xuất đặc trưng tĩnh...
+2026-04-09 14:18:46.383 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 14:18:55.983 | INFO     | pipeline.phase2_engineering:process_one:217 - [apollo] Joern tìm thấy 1287 methods tiềm năng.
+2026-04-09 14:18:55.983 | INFO     | pipeline.phase2_engineering:process_one:220 - [apollo] Bước 2: Khởi chạy PyDriller quét lịch sử commit...
+2026-04-09 14:18:56.019 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 14:21:08.330 | INFO     | pipeline.phase2_engineering:process_one:231 - [apollo] PyDriller hoàn tất với 10026 methods có thay đổi.
+2026-04-09 14:21:08.339 | INFO     | pipeline.phase2_engineering:process_one:249 - Repo apollo: Sinh 0 methods dataset qua Phase 2.
+2026-04-09 14:21:08.359 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:259 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 14:21:08.359 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 14:21:08.360 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:203 - Không có Repos nào chờ AI Phase 3.
+2026-04-09 14:21:08.360 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 14:21:08.360 | INFO     | pipeline.phase4_validation:run_phase4_validation:54 - Không có Repos nào chờ Phase 4.
+2026-04-09 14:21:08.360 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 14:57:20.098 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 14:57:20.098 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 14:57:20.098 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 14:57:20.098 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 14:57:26.348 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 14:57:26.348 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 14:57:26.348 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 14:57:26.349 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 14:57:26.349 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 14:57:26.349 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 14:57:26.349 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 14:57:26.350 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 14:57:26.350 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 14:57:26.351 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 14:57:26.351 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 14:57:26.359 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 14:57:26.359 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 14:57:26.360 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:169 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 14:57:26.364 | INFO     | pipeline.phase2_engineering:process_one:205 - [apollo] Bước 1: Khởi chạy Joern trích xuất đặc trưng tĩnh...
+2026-04-09 14:57:26.364 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 14:57:26.386 | ERROR    | pipeline.phase2_engineering:extract_features:116 - Lỗi extract joern cpgqls (có thể do OOM): Multiple exceptions: [Errno 111] Connect call failed ('::1', 8080, 0, 0), [Errno 111] Connect call failed ('127.0.0.1', 8080)
+2026-04-09 14:57:26.393 | ERROR    | pipeline.phase2_engineering:process_one:208 - [apollo] Joern returned zero methods. Check if Joern server is alive or if the code is parseable.
+2026-04-09 14:57:26.399 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:264 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 14:57:26.399 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 14:57:26.400 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:206 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 14:57:26.407 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:272 - Hoàn thành Giai đoạn 3 (AI Synthesis).
+2026-04-09 14:57:26.407 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 14:57:26.408 | INFO     | pipeline.phase4_validation:run_phase4_validation:57 - Phase 4: Bắt đầu Validating logic cho 1 repository.
+2026-04-09 14:57:26.414 | INFO     | pipeline.phase4_validation:run_phase4_validation:100 - Hoàn thành Giai đoạn 4 (QA & Refinement).
+2026-04-09 14:57:26.415 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 14:58:34.195 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 14:58:34.195 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 14:58:34.195 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 14:58:34.196 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 14:58:41.281 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 14:58:41.281 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 14:58:41.281 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 14:58:41.282 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 14:58:41.282 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 14:58:41.282 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 14:58:41.282 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 14:58:41.282 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 14:58:41.283 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 14:58:41.283 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 14:58:41.283 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 14:58:41.290 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 14:58:41.290 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 14:58:41.291 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:169 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 14:58:41.293 | INFO     | pipeline.phase2_engineering:process_one:205 - [apollo] Bước 1: Khởi chạy Joern trích xuất đặc trưng tĩnh...
+2026-04-09 14:58:41.293 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 14:58:50.066 | INFO     | pipeline.phase2_engineering:process_one:219 - [apollo] Joern tìm thấy 1235 methods tiềm năng.
+2026-04-09 14:58:50.067 | INFO     | pipeline.phase2_engineering:process_one:222 - [apollo] Bước 2: Khởi chạy PyDriller quét lịch sử commit...
+2026-04-09 14:58:50.088 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 15:00:15.214 | INFO     | pipeline.phase2_engineering:process_one:233 - [apollo] PyDriller hoàn tất với 10026 methods có thay đổi.
+2026-04-09 15:00:15.222 | INFO     | pipeline.phase2_engineering:process_one:254 - Repo apollo: Sinh 1 methods dataset qua Phase 2.
+2026-04-09 15:00:15.234 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:264 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 15:00:15.234 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 15:00:15.234 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:203 - Không có Repos nào chờ AI Phase 3.
+2026-04-09 15:00:15.234 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 15:00:15.235 | INFO     | pipeline.phase4_validation:run_phase4_validation:54 - Không có Repos nào chờ Phase 4.
+2026-04-09 15:00:15.235 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 15:03:06.073 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 15:03:06.073 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 15:03:06.073 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 15:03:06.073 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 15:03:13.232 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 15:03:13.232 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 15:03:13.232 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 15:03:13.233 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 15:03:13.233 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 15:03:13.233 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 15:03:13.233 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 15:03:13.233 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 15:03:13.234 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 15:03:13.234 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 15:03:13.234 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 15:03:13.241 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 15:03:13.242 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 15:03:13.242 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:174 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 15:03:13.245 | INFO     | pipeline.phase2_engineering:process_one:210 - [apollo] Bước 1: Khởi chạy Joern trích xuất đặc trưng tĩnh...
+2026-04-09 15:03:13.246 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 15:03:19.668 | INFO     | pipeline.phase2_engineering:process_one:223 - [apollo] Joern tìm thấy 1287 methods tiềm năng.
+2026-04-09 15:03:19.668 | INFO     | pipeline.phase2_engineering:process_one:226 - [apollo] Bước 2: Khởi chạy PyDriller quét lịch sử commit...
+2026-04-09 15:03:19.681 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 15:04:44.644 | INFO     | pipeline.phase2_engineering:process_one:237 - [apollo] PyDriller hoàn tất với 11917 methods có thay đổi.
+2026-04-09 15:04:44.651 | INFO     | pipeline.phase2_engineering:process_one:258 - Repo apollo: Sinh 1 methods dataset qua Phase 2.
+2026-04-09 15:04:44.663 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:268 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 15:04:44.664 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 15:04:44.664 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:206 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 15:04:44.664 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:257 - [apollo] Tiến hành gán nhãn Web (Camoufox) cho 1 methods...
+2026-04-09 15:04:44.664 | INFO     | pipeline.phase3_synthesis:init_browser:80 - Initializing Camoufox Browser (Headless Mode)...
+2026-04-09 15:04:44.664 | ERROR    | pipeline.phase3_synthesis:process_method_file:197 - Lỗi AI API file 107374184804.json (Repo apollo): It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+2026-04-09 15:04:44.670 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:272 - Hoàn thành Giai đoạn 3 (AI Synthesis).
+2026-04-09 15:04:44.670 | INFO     | __main__:main:50 - >>> START PHASE 4: VALIDATION
+2026-04-09 15:04:44.671 | INFO     | pipeline.phase4_validation:run_phase4_validation:57 - Phase 4: Bắt đầu Validating logic cho 1 repository.
+2026-04-09 15:04:44.676 | INFO     | pipeline.phase4_validation:run_phase4_validation:100 - Hoàn thành Giai đoạn 4 (QA & Refinement).
+2026-04-09 15:04:44.676 | INFO     | __main__:main:53 - 🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl
+2026-04-09 15:05:44.696 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 15:05:44.696 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 15:05:44.696 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 15:05:44.696 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 15:05:52.063 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 15:05:52.063 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 15:05:52.063 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 15:05:52.063 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 15:05:52.064 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 15:05:52.064 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 15:05:52.064 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 15:05:52.064 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 15:05:52.065 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 15:05:52.065 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 15:05:52.065 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 15:05:52.072 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 15:05:52.073 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 15:05:52.073 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:174 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 15:05:52.076 | INFO     | pipeline.phase2_engineering:process_one:210 - [apollo] Bước 1: Khởi chạy Joern trích xuất đặc trưng tĩnh...
+2026-04-09 15:05:52.077 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 15:05:57.994 | INFO     | pipeline.phase2_engineering:process_one:223 - [apollo] Joern tìm thấy 1287 methods tiềm năng.
+2026-04-09 15:05:57.994 | INFO     | pipeline.phase2_engineering:process_one:226 - [apollo] Bước 2: Khởi chạy PyDriller quét lịch sử commit...
+2026-04-09 15:05:58.006 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 15:07:25.995 | INFO     | pipeline.phase2_engineering:process_one:237 - [apollo] PyDriller hoàn tất với 11917 methods có thay đổi.
+2026-04-09 15:07:25.997 | WARNING  | pipeline.phase2_engineering:process_one:255 - [apollo] Debug Match: Sinh được 1 methods. Kiểm tra format:
+2026-04-09 15:07:25.997 | WARNING  | pipeline.phase2_engineering:process_one:256 - Sample Joern keys: [('apollo-adminservice/src/main/java/com/ctrip/framework/apollo/adminservice/AdminServiceAssemblyConfiguration.java', 'adminServiceAssemblySecurityFilterChain'), ('apollo-adminservice/src/main/java/com/ctrip/framework/apollo/adminservice/AdminServiceAutoConfiguration.java', 'adminServiceAuthenticationFilter'), ('apollo-adminservice/src/main/java/com/ctrip/framework/apollo/adminservice/AdminServiceHealthIndicator.java', 'health'), ('apollo-adminservice/src/main/java/com/ctrip/framework/apollo/adminservice/aop/NamespaceAcquireLockAspect.java', 'requireLockAdvice'), ('apollo-adminservice/src/main/java/com/ctrip/framework/apollo/adminservice/aop/NamespaceAcquireLockAspect.java', 'acquireLock')]
+2026-04-09 15:07:25.998 | WARNING  | pipeline.phase2_engineering:process_one:257 - Sample PyDriller keys: [('apollo-server/src/main/java/com/ctrip/apollo/ConfigServerApplication.java', 'ConfigServerApplication::main'), ('apollo-metaserver/src/main/java/com/ctrip/apollo/metaserver/MetaServerApplication.java', 'MetaServerApplication::main'), ('apollo-portal/src/main/java/com/ctrip/apollo/portal/PortalApplication.java', 'PortalApplication::main'), ('apollo-portal/src/main/java/com/ctrip/apollo/portal/controller/SampleController.java', 'SampleController::home'), ('apollo-portal/src/main/java/com/ctrip/apollo/portal/controller/AppController.java', 'AppController::list')]
+2026-04-09 15:07:26.003 | INFO     | pipeline.phase2_engineering:process_one:260 - Repo apollo: Sinh 1 methods dataset qua Phase 2.
+2026-04-09 15:07:26.022 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:270 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 15:07:26.022 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 15:07:26.023 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:210 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 15:07:26.024 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:261 - [apollo] Tiến hành gán nhãn Web (Camoufox) cho 1 methods...
+2026-04-09 15:07:26.024 | INFO     | pipeline.phase3_synthesis:init_browser:83 - Initializing Camoufox Browser (Headless Mode)...
+2026-04-09 15:07:58.728 | ERROR    | pipeline.phase3_synthesis:process_method_file:201 - Lỗi AI API file 107374184804.json (Repo apollo): Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first
+    - waiting for navigation to finish...
+    - navigated to "https://chat.deepseek.com/"
+
+2026-04-09 15:09:32.718 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 15:09:32.718 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 15:09:32.718 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 15:09:32.718 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 15:09:39.031 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 15:09:39.031 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 15:09:39.031 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 15:09:39.031 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 15:09:39.032 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 15:09:39.032 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 15:09:39.032 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 15:09:39.032 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 15:09:39.033 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 15:09:39.033 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 15:09:39.033 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 15:09:39.041 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 15:09:39.041 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 15:09:39.042 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:177 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 15:09:39.045 | INFO     | pipeline.phase2_engineering:process_one:213 - [apollo] Bước 1: Khởi chạy Joern trích xuất đặc trưng tĩnh...
+2026-04-09 15:09:39.045 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 15:09:45.371 | INFO     | pipeline.phase2_engineering:process_one:226 - [apollo] Joern tìm thấy 1287 methods tiềm năng.
+2026-04-09 15:09:45.371 | INFO     | pipeline.phase2_engineering:process_one:229 - [apollo] Bước 2: Khởi chạy PyDriller quét lịch sử commit...
+2026-04-09 15:09:45.386 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 15:11:50.829 | INFO     | pipeline.phase2_engineering:process_one:240 - [apollo] PyDriller hoàn tất với 11682 methods có thay đổi.
+2026-04-09 15:11:50.954 | INFO     | pipeline.phase2_engineering:process_one:263 - Repo apollo: Sinh 1239 methods dataset qua Phase 2.
+2026-04-09 15:11:50.971 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:273 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 15:11:50.972 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 15:11:50.972 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:213 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 15:11:50.975 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:264 - [apollo] Tiến hành gán nhãn Web (Camoufox) cho 1239 methods...
+2026-04-09 15:11:50.975 | INFO     | pipeline.phase3_synthesis:init_browser:83 - Initializing Camoufox Browser (Headless Mode)...
+2026-04-09 15:12:25.409 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184804.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+    - waiting for navigation to finish...
+    - navigated to "https://chat.deepseek.com/"
+
+2026-04-09 15:12:55.425 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184732.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:13:25.441 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374183401.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:13:55.457 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374183542.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:14:25.473 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374183453.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:14:55.489 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184145.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:15:25.506 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184143.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:15:55.521 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184168.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:16:25.536 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184357.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:16:55.551 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374183077.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:17:25.565 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374183151.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:17:55.578 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374183158.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:18:25.595 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374183487.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:18:55.609 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184169.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:19:25.625 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374182443.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:19:55.640 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374182456.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:20:25.652 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374182477.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:20:55.667 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374182481.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:21:25.680 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374182476.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:21:55.695 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374182486.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:22:25.707 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374182497.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:23:13.665 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 15:23:13.665 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 15:23:13.665 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 15:23:13.665 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 15:23:21.284 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 15:23:21.285 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 15:23:21.285 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 15:23:21.285 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 15:23:21.285 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 15:23:21.285 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 15:23:21.285 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 15:23:21.286 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 15:23:21.286 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 15:23:21.286 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 15:23:21.287 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 15:23:21.294 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 15:23:21.294 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 15:23:21.294 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:177 - Phase 2: Bắt đầu xử lý 1 repository.
+2026-04-09 15:23:21.297 | INFO     | pipeline.phase2_engineering:process_one:213 - [apollo] Bước 1: Khởi chạy Joern trích xuất đặc trưng tĩnh...
+2026-04-09 15:23:21.298 | DEBUG    | pipeline.phase2_engineering:extract_features:92 - [apollo] Đang phân tích và ghi file: /home/lambda/lambda/code/pbl5-queries/temp_data/joern_apollo.json
+2026-04-09 15:23:27.511 | INFO     | pipeline.phase2_engineering:process_one:226 - [apollo] Joern tìm thấy 1287 methods tiềm năng.
+2026-04-09 15:23:27.511 | INFO     | pipeline.phase2_engineering:process_one:229 - [apollo] Bước 2: Khởi chạy PyDriller quét lịch sử commit...
+2026-04-09 15:23:27.525 | INFO     | pipeline.phase2_engineering:process_commit_history_worker:126 - [CPU Worker] Bắt đầu duyệt PyDriller trên: temp_data/apollo
+2026-04-09 15:24:53.467 | INFO     | pipeline.phase2_engineering:process_one:240 - [apollo] PyDriller hoàn tất với 11682 methods có thay đổi.
+2026-04-09 15:24:53.534 | INFO     | pipeline.phase2_engineering:process_one:263 - Repo apollo: Sinh 1239 methods dataset qua Phase 2.
+2026-04-09 15:24:53.546 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:273 - Hoàn thành Giai đoạn 2 (Engineering).
+2026-04-09 15:24:53.546 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 15:24:53.547 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:213 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 15:24:53.548 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:264 - [apollo] Tiến hành gán nhãn Web (Camoufox) cho 1239 methods...
+2026-04-09 15:24:53.548 | INFO     | pipeline.phase3_synthesis:init_browser:83 - Initializing Camoufox Browser (Headless Mode)...
+2026-04-09 15:25:26.915 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184804.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+
+2026-04-09 15:25:56.930 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184732.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+    - waiting for" https://chat.deepseek.com/api/v0/users/oauth/google/authorize?os=web&device_id=&shumei_verification=&hcaptcha_token=" navigation to finish...
+    - navigated to "https://accounts.google.com/v3/signin/identifier?opparams=%253F&access_type=offline&client_id=205977709770-3d0am349pfuhpv45soo1qt5o6h7cbofk.apps.googleusercontent.com&o2v=1&prompt=consent&redirect_ur…"
+
+2026-04-09 15:26:26.948 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374183401.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+    - waiting for" https://accounts.google.com.vn/accounts/SetSID?ssdc=1&sidt=ALWU2ctHDrOUCPzNFdlFDjLKQRKQnFWc9HONq4y1GDXa8L1DZH%2B7FwwagoA17xhWvp3vJZMRuq7XKfjaHwHHA328Ar7AfEh4LiN9MBopL6W26CyrDR5m2DVIrh14%2BpfH06KLaws3…" navigation to finish...
+    - navigated to "https://accounts.google.com.vn/accounts/SetSID?ssdc=1&sidt=ALWU2ctHDrOUCPzNFdlFDjLKQRKQnFWc9HONq4y1GDXa8L1DZH%2B7FwwagoA17xhWvp3vJZMRuq7XKfjaHwHHA328Ar7AfEh4LiN9MBopL6W26CyrDR5m2DVIrh14%2BpfH06KLaws3…"
+    - waiting for" https://accounts.google.com/signin/oauth/id?authuser=0&part=AJi8hAPOV7P9wwKHWeO1Zkubo3kA6NXhaIRMnS34vrV7Qev6ZP-H2BdvRrSJaTghC4OwOqmFLtNujL3yy_zWZ9e5eAk1ZMMKHSeb5qiBHteJ2LkYXiamz834C6q57dj3Ynb3ULunVpw…" navigation to finish...
+    - navigated to "https://accounts.google.com/signin/oauth/id?authuser=0&part=AJi8hAPOV7P9wwKHWeO1Zkubo3kA6NXhaIRMnS34vrV7Qev6ZP-H2BdvRrSJaTghC4OwOqmFLtNujL3yy_zWZ9e5eAk1ZMMKHSeb5qiBHteJ2LkYXiamz834C6q57dj3Ynb3ULunVpw…"
+
+2026-04-09 15:26:59.449 | INFO     | __main__:main:23 - 🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥
+2026-04-09 15:26:59.449 | INFO     | __main__:main:24 - 🚀 Running in WEB mode for AI Labeling
+2026-04-09 15:26:59.449 | INFO     | __main__:main:32 - >>> START PHASE 1: DATA ACQUISITION
+2026-04-09 15:26:59.449 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java management system
+2026-04-09 15:27:06.866 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java "web server" http
+2026-04-09 15:27:06.867 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:java database engine
+2026-04-09 15:27:06.867 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "game engine" graphics
+2026-04-09 15:27:06.867 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ "operating system" kernel
+2026-04-09 15:27:06.867 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ computer-vision library
+2026-04-09 15:27:06.867 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ networking tool
+2026-04-09 15:27:06.867 | INFO     | pipeline.phase1_acquisition:crawl_repositories:106 - Đang fetch repositories với query: language:C++ driver hardware
+2026-04-09 15:27:06.868 | INFO     | pipeline.phase1_acquisition:crawl_repositories:143 - Hoàn thành crawl 1 repos.
+2026-04-09 15:27:06.869 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:180 - Bắt đầu clone các repo đã thu thập...
+2026-04-09 15:27:06.869 | INFO     | pipeline.phase1_acquisition:clone_repository:149 - Đang shallow clone apollo...
+2026-04-09 15:27:06.869 | INFO     | pipeline.phase1_acquisition:clone_repository:152 - Repo apollo đã tồn tại, skip clone.
+2026-04-09 15:27:06.877 | INFO     | pipeline.phase1_acquisition:run_phase1_acquisition:198 - Hoàn thành Giai đoạn 1 (Data Acquisition).
+2026-04-09 15:27:06.877 | INFO     | __main__:main:38 - >>> START PHASE 2: ENGINEERING
+2026-04-09 15:27:06.877 | INFO     | pipeline.phase2_engineering:run_phase2_engineering:174 - Không có Repos nào cần chạy Phase 2.
+2026-04-09 15:27:06.877 | INFO     | __main__:main:44 - >>> START PHASE 3: AI SYNTHESIS
+2026-04-09 15:27:06.877 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:213 - Phase 3: Bắt đầu gán nhãn cho 1 repository bằng chế độ: WEB
+2026-04-09 15:27:06.880 | INFO     | pipeline.phase3_synthesis:run_phase3_synthesis:264 - [apollo] Tiến hành gán nhãn Web (Camoufox) cho 1239 methods...
+2026-04-09 15:27:06.880 | INFO     | pipeline.phase3_synthesis:init_browser:83 - Initializing Camoufox Browser (Headless Mode)...
+2026-04-09 15:27:40.362 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184804.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+    - waiting for navigation to finish...
+    - navigated to "https://chat.deepseek.com/"
+    - waiting for" https://chat.deepseek.com/api/v0/users/oauth/google/authorize?os=web&device_id=&shumei_verification=&hcaptcha_token=" navigation to finish...
+    - navigated to "https://accounts.google.com/v3/signin/identifier?opparams=%253F&access_type=offline&client_id=205977709770-3d0am349pfuhpv45soo1qt5o6h7cbofk.apps.googleusercontent.com&o2v=1&prompt=consent&redirect_ur…"
+    - waiting for" https://accounts.google.com.vn/accounts/SetSID?ssdc=1&sidt=ALWU2csRfOYYrYMKuztttWadXr6yHVV3d/U2EfdfdCJFylePEr1w6AFGh2VmCPw0FJfQlr2q2StOXxeEZWMau%2B2Hi2vWNJk1lDQU5SgdUh1iebKQmazHOs3QR27UzWhpyu4gmTPRBp…" navigation to finish...
+    - navigated to "https://accounts.google.com.vn/accounts/SetSID?ssdc=1&sidt=ALWU2csRfOYYrYMKuztttWadXr6yHVV3d/U2EfdfdCJFylePEr1w6AFGh2VmCPw0FJfQlr2q2StOXxeEZWMau%2B2Hi2vWNJk1lDQU5SgdUh1iebKQmazHOs3QR27UzWhpyu4gmTPRBp…"
+    - waiting for" https://accounts.google.com/signin/oauth/id?authuser=0&part=AJi8hAOdThSGTuy5wTGdrjXjk5WOI6uLcB0divvoTSQQmAjng2Iye9fgL1WDKi9SGsYS-YVTRlVsUBhxJh-DY0SuCBnWlv9seWLTxm6hv6GW_RZe_ZZLX0uwbWLQxUqEevuxw_XZmr0…" navigation to finish...
+
+2026-04-09 15:28:10.376 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374184732.json (Repo apollo): Locator.wait_for: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("div[contenteditable='true']").first to be visible
+    - waiting for" https://accounts.google.com/signin/oauth/id?authuser=0&part=AJi8hAOdThSGTuy5wTGdrjXjk5WOI6uLcB0divvoTSQQmAjng2Iye9fgL1WDKi9SGsYS-YVTRlVsUBhxJh-DY0SuCBnWlv9seWLTxm6hv6GW_RZe_ZZLX0uwbWLQxUqEevuxw_XZmr0…" navigation to finish...
+    - navigated to "https://accounts.google.com/signin/oauth/id?authuser=0&part=AJi8hAOdThSGTuy5wTGdrjXjk5WOI6uLcB0divvoTSQQmAjng2Iye9fgL1WDKi9SGsYS-YVTRlVsUBhxJh-DY0SuCBnWlv9seWLTxm6hv6GW_RZe_ZZLX0uwbWLQxUqEevuxw_XZmr0…"
+    - waiting for" https://accounts.google.com/signin/oauth/consent?as=S941026641%3A1775723234946543&authuser=0&client_id=205977709770-3d0am349pfuhpv45soo1qt5o6h7cbofk.apps.googleusercontent.com&flowName=GeneralOAuthFl…" navigation to finish...
+    - navigated to "https://chat.deepseek.com/authorized?provider=GOOGLE&nonce=cb49be8045f968923d430f3ee0c04ee107ba9c195370e5f4a3a8bc3375658c5d&new=0&case=1"
+
+2026-04-09 15:31:35.946 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374182456.json (Repo apollo): Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("textarea").first
+    - locator resolved to <textarea rows="2" name="search" autocomplete="off" placeholder="Message DeepSeek" class="_27c9245 ds-scroll-area ds-scroll-area--show-on-focus-within d96f2d2a"></textarea>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - performing click action
+
+2026-04-09 15:32:05.975 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374182477.json (Repo apollo): Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("textarea").first
+    - locator resolved to <textarea rows="2" name="search" autocomplete="off" placeholder="Message DeepSeek" class="_27c9245 ds-scroll-area ds-scroll-area--show-on-focus-within d96f2d2a"></textarea>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - performing click action
+
+2026-04-09 15:32:36.013 | ERROR    | pipeline.phase3_synthesis:process_method_file:204 - Lỗi AI API file 107374182481.json (Repo apollo): Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("textarea").first
+    - locator resolved to <textarea rows="2" name="search" autocomplete="off" placeholder="Message DeepSeek" class="_27c9245 ds-scroll-area ds-scroll-area--show-on-focus-within d96f2d2a"></textarea>
+  - attempting click action
+    - waiting for element to be visible, enabled and stable
+    - element is visible, enabled and stable
+    - scrolling into view if needed
+    - done scrolling
+    - performing click action
+

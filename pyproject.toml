@@ -6,14 +6,17 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "aiohttp>=3.13.5",
+    "camoufox>=0.4.11",
     "cpgqls-client>=0.0.9",
     "jsonschema>=4.26.0",
     "loguru>=0.7.3",
     "nest-asyncio>=1.6.0",
     "openai>=2.30.0",
+    "playwright>=1.58.0",
     "pydriller>=2.9",
     "python-dotenv>=1.2.2",
     "tenacity>=9.1.4",
     "tqdm>=4.67.3",
     "unidiff>=0.7.5",
+    "utils>=1.0.2",
 ]

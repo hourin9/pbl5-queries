@@ -1,13 +1,19 @@
-import os
-import json
 import asyncio
-import aiohttp
 import glob
-from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
+import json
+import os
+
+import aiohttp
+from tenacity import (retry, retry_if_exception_type, stop_after_attempt,
+                      wait_exponential)
+
 try:
-    from camoufox.async_api import Camoufox
+    from camoufox import AsyncCamoufox as Camoufox
 except ImportError:
-    Camoufox = None
+    try:
+        from camoufox.async_api import Camoufox
+    except ImportError:
+        Camoufox = None
 from utils.logger import get_logger
 from utils.state_manager import state_manager
 
@@ -75,7 +81,8 @@ class WebDeepSeekLabeler:
         if self.browser: return
         
         logger.info("Initializing Camoufox Browser (Headless Mode)...")
-        self.camou = Camoufox(headless=True, humanize=True)
+        # Sử dụng AsyncCamoufox
+        self.camou = Camoufox(headless=False, humanize=True)
         self.browser = await self.camou.start()
         
         storage_state = None
@@ -111,11 +118,14 @@ class WebDeepSeekLabeler:
         
         prompt = f"{SYSTEM_PROMPT}\n\nInput Data: {json.dumps(item_data, ensure_ascii=False)}"
         
-        # Tìm ô nhập liệu
-        textarea = self.page.locator("textarea").first
+        # Tìm ô nhập liệu (DeepSeek chat)
+        textarea = self.page.locator("textarea#chat-input")
+        if await textarea.count() == 0:
+            textarea = self.page.locator("textarea").first
         if await textarea.count() == 0:
             textarea = self.page.locator("div[contenteditable='true']").first
         
+        await textarea.wait_for(state="visible", timeout=30000)
         await textarea.click()
         await textarea.fill(prompt)
         
@@ -150,7 +160,7 @@ class WebDeepSeekLabeler:
     async def close(self):
         if self.browser:
             await self.browser.close()
-            await self.camou.stop()
+            # AsyncCamoufox không cần gọi stop() riêng, browser.close() là đủ.
 
 async def process_method_file(session, labeler, repo_url, r_name, method_json_path, gt_out_dir, semaphore):
     filename = os.path.basename(method_json_path)
@@ -252,10 +262,16 @@ async def run_phase3_synthesis(input_dir="method_evolutions", output_dir="ground
                     continue
 
                 logger.info(f"[{repo_name}] Tiến hành gán nhãn Web (Camoufox) cho {len(files)} methods...")
+                results = []
                 for f in files:
-                    await process_method_file(None, labeler, repo_url, repo_name, f, repo_output, api_semaphore)
+                    res = await process_method_file(None, labeler, repo_url, repo_name, f, repo_output, api_semaphore)
+                    results.append(res)
                 
-                state_manager.update_phase(repo_url, 3, 'DONE')
+                if all(results):
+                    state_manager.update_phase(repo_url, 3, 'DONE')
+                else:
+                    fail_count = len(results) - sum(results)
+                    state_manager.update_phase(repo_url, 3, 'FAILED', f"{fail_count} methods failed")
     finally:
         if session: await session.close()
         if mode == "web": await labeler.close()

@@ -47,7 +47,7 @@ def validate_dataset_schema(gt_file_path):
         except ValidationError as e:
             return False, f"Schema không hợp lệ: {e.message}"
 
-def run_phase4_validation(evo_dir="method_evolutions", gt_dir="ground_truth", out_file="dataset_output/final_dataset.jsonl"):
+async def run_phase4_validation(evo_dir="method_evolutions", gt_dir="ground_truth", out_file="dataset_output/final_dataset.jsonl"):
     os.makedirs(os.path.dirname(out_file), exist_ok=True)
     repos = state_manager.get_pending_repos(4)
     if not repos:
