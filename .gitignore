@@ -93,5 +93,6 @@ archive/
 ground_truth/
 data/state.db
 dataset_output/
+graph_dataset.json
 logs/
 
