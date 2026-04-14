@@ -1,0 +1,1 @@
+@main def main() = { val p = importCode("temp_data/abixen-platform"); println("Project: " + p.name); println("CPG: " + p.cpg.isDefined) }

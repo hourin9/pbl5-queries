@@ -85,3 +85,9 @@ workspace/
 *.csv
 .speaki/
 *.tar.gz
+
+src/
+temp_data/
+method_evolutions/
+archive/
+ground_truth/

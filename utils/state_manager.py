@@ -38,10 +38,10 @@ class StateManager:
     def upsert_repo(self, repo_url, repo_name):
         with sqlite3.connect(self.db_path) as conn:
             cursor = conn.cursor()
+            # Chỉ chèn nếu chưa tồn tại repo_url. Không dùng UPDATE để tránh reset tiến trình cũ.
             cursor.execute("""
-                INSERT INTO repo_state (repo_url, repo_name)
+                INSERT OR IGNORE INTO repo_state (repo_url, repo_name)
                 VALUES (?, ?)
-                ON CONFLICT(repo_url) DO NOTHING
             """, (repo_url, repo_name))
             conn.commit()
 
@@ -60,9 +60,18 @@ class StateManager:
     def get_pending_repos(self, phase_num):
         phase_col = f"phase{phase_num}_status"
         with sqlite3.connect(self.db_path) as conn:
-            # Lấy tất cả repos mà phase hiện tại chưa DONE
             cursor = conn.cursor()
-            cursor.execute(f"SELECT repo_url, repo_name FROM repo_state WHERE {phase_col} != 'DONE'")
+            if phase_num == 1:
+                # Giai đoạn 1 không cần điều kiện phase trước
+                cursor.execute(f"SELECT repo_url, repo_name FROM repo_state WHERE {phase_col} != 'DONE'")
+            else:
+                # Các giai đoạn sau chỉ lấy nếu giai đoạn trước đã DONE và giai đoạn này chưa DONE
+                prev_phase_col = f"phase{phase_num-1}_status"
+                cursor.execute(f"""
+                    SELECT repo_url, repo_name 
+                    FROM repo_state 
+                    WHERE {prev_phase_col} = 'DONE' AND {phase_col} != 'DONE'
+                """)
             return cursor.fetchall()
             
     def get_repo_status(self, repo_url):

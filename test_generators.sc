@@ -1,0 +1,1 @@
+@main def main() = { println(io.joern.console.cpgcreation.CpgGeneratorFactory.list.map(_.getClass.getName).mkString(", ")) }

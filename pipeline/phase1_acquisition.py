@@ -68,17 +68,16 @@ class GitHubAcquisition:
 
     async def crawl_repositories(self, max_repos=100):
         queries = [
-            "language:java management system",
-            'language:java "web server" http',
-            "language:java database engine",
-            'language:C++ "game engine" graphics',
-            'language:C++ "operating system" kernel',
-            "language:C++ computer-vision library",
-            "language:C++ networking tool",
-            "language:C++ driver hardware",
+            # Rút gọn để rộng cửa hơn cho GitHub Search
+            "language:java stars:>1000 management-system",
+            "language:java stars:>500 spring-boot",
+            "language:java stars:>500 microservices",
+            "language:java stars:>500 orm hibernate",
+            "language:java stars:>500 restful-api",
+            "language:java stars:>500 proxy server"
         ]
-        # Giới hạn mỗi query chỉ lấy 3-4 repo để đảm bảo đa dạng
-        REPOS_PER_QUERY = 4
+        # Lấy khoảng 5 repo tốt nhất cho mỗi query
+        REPOS_PER_QUERY = 5
 
         # Từ khóa tuyệt đối không được xuất hiện
         forbidden = [

@@ -1,1 +1,0 @@
-{"mid": "107374182679", "sa": {"id": "107374182679", "name": "r8159_patch_code", "file_path": "r8152.c", "features": {"loc": 3, "cyclomatic_complexity": 1, "fan_in": 1, "fan_out": 0, "code": "static void r8159_patch_code(struct r8152 *tp)\n{\n}"}}, "ev": [{"h": "a64197dd", "d": "2025-06-09 22:54:53+09:00", "msg": "Added r8152-2.20.1.tar.bz2.", "nd": 460, "ni": 2975, "cxc": 1}]}

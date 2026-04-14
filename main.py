@@ -8,7 +8,7 @@ load_dotenv()
 
 from pipeline.phase1_acquisition import run_phase1_acquisition
 from pipeline.phase2_engineering import run_phase2_engineering
-from pipeline.phase3_synthesis import run_phase3_synthesis
+from pipeline.phase3_synthesis import run_phase3_synthesis, save_auth_flow
 from pipeline.phase4_validation import run_phase4_validation
 from utils.logger import get_logger
 
@@ -16,44 +16,48 @@ logger = get_logger("main")
 
 async def main():
     parser = argparse.ArgumentParser(description="PBL5 Code Smell Dataset Pipeline")
-    parser.add_argument("--mode", type=str, choices=["api", "web"], default="api", 
+    parser.add_argument("--mode", type=str, choices=["api", "web"], default="web", 
                         help="Mode for AI labeling: 'api' (DeepSeek API) or 'web' (Camoufox browser)")
+    parser.add_argument("--save-auth", action="store_true",
+                        help="Open browser for manual DeepSeek login, save auth state, then exit")
     args = parser.parse_args()
     
-    logger.info("🔥 KHỞI CHẠY PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥")
+    # Handle --save-auth separately
+    if args.save_auth:
+        logger.info("🔐 Opening browser for DeepSeek login...")
+        await save_auth_flow()
+        return
+    
+    logger.info("🔥 PIPELINE CODE SMELL (ASYNC & MULTIPROCESSING) 🔥")
     logger.info(f"🚀 Running in {args.mode.upper()} mode for AI Labeling")
     
-    # Lấy thông số từ môi trường
     MAX_REPOS = int(os.getenv("MAX_REPOS", 10))
     
-    # ----------------------------------------------------
-    # PHASE 1: Thu thập GitHub
-    # ----------------------------------------------------
+    # PHASE 1: Data Acquisition
     logger.info(">>> START PHASE 1: DATA ACQUISITION")
     await run_phase1_acquisition(max_repos=MAX_REPOS)
     
-    # ----------------------------------------------------
-    # PHASE 2: Trích xuất đặc trưng (Joern + PyDriller)
-    # ----------------------------------------------------
+    # PHASE 2: Feature Engineering (Joern + PyDriller)
     logger.info(">>> START PHASE 2: ENGINEERING")
     await run_phase2_engineering()
     
-    # ----------------------------------------------------
-    # PHASE 3: Gán nhãn AI (DeepSeek Teacher Model)
-    # ----------------------------------------------------
+    # PHASE 2.5: Dynamic Threshold Calibration
+    logger.info(">>> START PHASE 2.5: CALIBRATION")
+    from pipeline.phase2_5_calibration import run_phase_2_5_calibration
+    run_phase_2_5_calibration()
+
+    # PHASE 3: AI Synthesis (DeepSeek Teacher Model)
     logger.info(">>> START PHASE 3: AI SYNTHESIS")
     await run_phase3_synthesis(mode=args.mode)
     
-    # ----------------------------------------------------
-    # PHASE 4: Kiểm thử và đóng gói Dataset
-    # ----------------------------------------------------
+    # PHASE 4: Validation & Dataset Packaging
     logger.info(">>> START PHASE 4: VALIDATION")
     await run_phase4_validation()
     
-    logger.info("🎉 PIPELINE HOÀN TẤT! Dataset cuối cùng tại dataset_output/final_dataset.jsonl")
+    logger.info("🎉 PIPELINE COMPLETE! Final dataset at dataset_output/final_dataset.jsonl")
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        logger.warning("Pipeline bị dừng bởi người dùng.")
+        logger.warning("Pipeline stopped by user.")
