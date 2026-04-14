@@ -91,3 +91,7 @@ temp_data/
 method_evolutions/
 archive/
 ground_truth/
+data/state.db
+dataset_output/
+logs/
+
