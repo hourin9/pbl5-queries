@@ -2,6 +2,7 @@ import asyncio
 import glob
 import json
 import os
+import random
 from datetime import datetime
 
 import aiohttp
@@ -20,92 +21,50 @@ logger = get_logger(__name__)
 
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API")
 AUTH_STATE_FILE = "data/auth_state.json"
-METHOD_BODY_MAX_CHARS = 2000
+METHOD_BODY_MAX_CHARS = 8000
 
 # ---------------------------------------------------------------------------
 # System Prompt — English, threshold-based, quantitative reasoning
 # ---------------------------------------------------------------------------
-SYSTEM_PROMPT_TEMPLATE = """You are a static analysis engine for detecting code smells in Java/C++ methods.
-Given a method's source code, static metrics, and git evolution history, determine if it exhibits:
+SYSTEM_PROMPT_TEMPLATE = """You are a Senior Software Architectural Analyst. Your objective is to perform a multidimensional evaluation of Java/C++ methods to identify architectural anti-patterns, specifically focusing on Shotgun Surgery and Divergent Change.
 
-1. SHOTGUN SURGERY: When this method changes, many other files must also change.
-   Detection criteria (ALL must be true):
-   - fan_out >= [TH_FAN_OUT] (method calls many external methods)
-   - total_unique_co_changed_classes >= [TH_CO_CLASSES] (method changes alongside distinct classes across its history)
-   - commit_count >= [TH_COMMIT_MIN] (sufficient history to establish pattern)
+### 1. THEORETICAL FRAMEWORK:
+*   **SHOTGUN SURGERY (Scattered Functionality):** A manifestation of Poor Modularity where a modification to a single logical requirement necessitates synchronized changes across multiple disjoint software components. 
+    *   *E.g.*: A modification in the "Payment Gateway" logic forces updates in 25 disparate Controller, Service, and Repository classes.
+*   **DIVERGENT CHANGE (Tangled Responsibilities):** A violation of the Single Responsibility Principle (SRP), where a single method/module acts as an "Incoherent Hub" for multiple domain concerns. 
+    *   *E.g.*: A method `processTransaction` is modified for "Interest Rate Calculation" in one commit and "User Notification Formatting" in another, indicating a lack of internal cohesion.
 
-2. DIVERGENT CHANGE: This method is modified frequently for many unrelated reasons.
-   Detection criteria (ALL must be true):
-   - commit_count >= [TH_COMMIT_COUNT] (sufficient change history)
-   - distinct_concerns >= 3 (commits address 3+ different feature areas)
-   - complexity_delta > 0 (complexity has grown over time)
+### 2. HEURISTIC ANALYSIS CONSTRAINTS:
+1.  **Quantitative-Qualitative Correlation**: Perform a first-order comparison of Actual Metrics (V) against established Repository-Specific Thresholds (T): [THRESHOLDS].
+2.  **Architectural Contextualization**: Deduce the Layered Position (e.g., Domain Service, Infrastructure Adapter, Web Controller) to calibrate the expected Fan-out and Fan-in density.
+3.  **Conflict Resolution (Critical)**: Address "Metrics-Semantics Mismatch". 
+    *   *E.g.*: A high `total_unique_co_changed_classes` might be a "False Positive" caused by a monolithic library version upgrade rather than architectural coupling.
 
-INSTRUCTIONS:
-1. Read the method body to understand its responsibilities and coupling.
-2. To evaluate fan_out coupling, rely on the explicitly extracted 'external_calls' array rather than just reading the truncated method body.
-3. Analyze commit messages to identify distinct concerns/feature areas
-4. Compute ALL derived_metrics from the provided data
-5. Compare each metric against its threshold
-6.  - Assign a "final_smell_probability" per smell. Combine metrics fulfillment with semantic judgement.
-    - If label is "none" but metrics are borderline or semantics are bad, confidence MUST be low (e.g. 0.4-0.6).
-    - Analyze the 'file_path' and 'code' to determine the architectural context (Method role and Project type).
-    - Provide a concise, imperative "suggested_refactor".
-    - If label is "none" and NO thresholds are even close, suggested_refactor should be "No changes required". If it's a borderline case, suggest preventative refactoring.
-
-Return ONLY a valid JSON object. NO markdown fences, NO extra text.
-Schema:
+### 3. FORMALIZED JSON SCHEMA:
 {
-  "derived_metrics": {
-    "commit_count": <int>,
-    "time_span_days": <int>,
-    "change_frequency_monthly": <float, round to 2 decimals>,
-    "total_insertions": <int>,
-    "total_deletions": <int>,
-    "avg_churn_per_commit": <float, round to 1 decimal>,
-    "complexity_start": <int, first ev entry cxc>,
-    "complexity_end": <int, last ev entry cxc>,
-    "complexity_delta": <int, end - start>,
-    "avg_files_per_commit": <float, round to 1 decimal>,
-    "max_files_single_commit": <int>,
-    "total_unique_co_changed_classes": <int, distinct classes changed alongside this method>,
-    "distinct_concerns": <int, number of distinct feature areas from commit messages>,
-    "concern_keywords": [<string>, ...]
-  },
   "semantic_analysis": {
-    "single_responsibility_violation": <bool>,
-    "domain_coupling": "High" | "Medium" | "Low",
-    "conflict_resolution": {
-      "status": "Aligned" | "Metrics_Overstated" | "Metrics_Understated",
-      "reason": <string, why metrics and semantics disagree or agree>
-    },
+    "architectural_roles": ["Primary responsibilities identified via code and commit semantics"],
+    "cohesion_assessment": "High" | "Medium" | "Low",
+    "is_srp_violated": <bool>,
     "architectural_context": {
-      "method_role": "Controller" | "Service" | "Repository" | "Utility" | "Entity" | "Configuration" | "Other",
-      "project_architecture": "Monolithic" | "Microservices" | "Multi-module Maven/Gradle" | "Other",
-      "design_patterns_observed": [<string>, ...]
-    }
-  },
-  "shotgun_surgery": {
-    "metrics_score": <float 0.0-1.0>,
-    "override_status": "No_Override" | "Semantic_Upgrade" | "Semantic_Downgrade",
-    "final_smell_probability": <float 0.0-1.0>
-  },
-  "divergent_change": {
-    "metrics_score": <float 0.0-1.0>,
-    "override_status": "No_Override" | "Semantic_Upgrade" | "Semantic_Downgrade",
-    "final_smell_probability": <float 0.0-1.0>
+      "layer": "Controller" | "Service" | "Infrastructure" | "Domain" | "Other",
+      "pattern": "Layered" | "Microservices" | "Hexagonal" | "Monolithic"
+    },
+    "conflict_resolution": "Justification for overriding metrics via semantic design principles"
   },
   "final_decision": {
     "label": "none" | "shotgun_surgery" | "divergent_change",
-    "confidence": <float 0.0-1.0>,
+    "confidence": <float>,
     "reasoning_chain": [
-      "[Metrics Base]: <evaluate thresholds with values>",
-      "[Semantic Deep-Dive]: <evaluate domain coupling, SRP, and architectural role>",
-      "[Conflict Resolution]: <resolve mismatches between metrics and semantics>",
-      "[Conclusion]: <final label and confidence justification>"
+      "[Metric Comparison]: Differential analysis of actual stats vs Thresholds: [THRESHOLDS].",
+      "[Design Integrity]: Analysis of Responsibility Cohesion and Ripple Effect probability.",
+      "[Conclusion]: Final synthesis and validation of the identified anti-pattern."
     ]
   },
-  "suggested_refactor": <string, imperative structural guidance, NO code>
-}"""
+  "suggested_refactor": "Formal restructuring command (e.g., Apply Strategy Pattern to decouple Domain logic)"
+}
+
+ONLY VALID JSON. NO MARKDOWN. NO EXPLANATIONS."""
 
 
 def get_dynamic_prompt(repo_dir):
@@ -116,11 +75,10 @@ def get_dynamic_prompt(repo_dir):
     else:
         th = {"fan_out": 7, "commit_count": 5, "co_classes": 5}
     
-    prompt = SYSTEM_PROMPT_TEMPLATE
-    prompt = prompt.replace("[TH_FAN_OUT]", str(th.get("fan_out", 7)))
-    prompt = prompt.replace("[TH_CO_CLASSES]", str(th.get("co_classes", 5)))
-    prompt = prompt.replace("[TH_COMMIT_COUNT]", str(th.get("commit_count", 5)))
-    prompt = prompt.replace("[TH_COMMIT_MIN]", str(max(3, th.get("commit_count", 5) - 2)))
+    # Tạo chuỗi mô tả các ngưỡng thực tế cho repo này
+    th_str = f"fan_out: {th.get('fan_out', 7)}, co_changed_classes: {th.get('co_classes', 5)}, commit_count: {th.get('commit_count', 5)}"
+    
+    prompt = SYSTEM_PROMPT_TEMPLATE.replace("[THRESHOLDS]", th_str)
     return prompt
 
 # ---------------------------------------------------------------------------
@@ -214,7 +172,8 @@ def build_ai_input(data):
         method_body = method_body[:METHOD_BODY_MAX_CHARS] + "\n// ... truncated"
 
     pre_computed = precompute_metrics(data)
-    if not pre_computed:
+    if not pre_computed or pre_computed.get("commit_count", 0) < 3:
+        # Point 1: Skip poverty git history
         return None
 
     return {
@@ -229,7 +188,7 @@ def build_ai_input(data):
             "external_calls": features.get("external_calls", []),
         },
         "pre_computed": pre_computed,
-        "commit_messages": [e.get("msg", "")[:150] for e in unique_ev],
+        "commit_messages": [e.get("msg", "")[:500] for e in unique_ev],
     }
 
 
@@ -317,7 +276,7 @@ class WebDeepSeekLabeler:
             logger.info("⏳ Please log in to DeepSeek in the browser window...")
             logger.info("   Waiting up to 2 minutes for login to complete...")
             try:
-                await self.page.wait_for_url("**/chat/**", timeout=120000)
+                await self.page.wait_for_url("https://chat.deepseek.com/**", timeout=120000)
                 await asyncio.sleep(2)
                 await self._save_auth()
                 logger.info(f"✅ Auth state saved to {AUTH_STATE_FILE}")
@@ -353,7 +312,7 @@ class WebDeepSeekLabeler:
         if await textarea.count() == 0:
             textarea = self.page.locator("div[contenteditable='true']").first
 
-        await textarea.wait_for(state="visible", timeout=15000)
+        await textarea.wait_for(state="visible", timeout=60000)
         await textarea.click()
         logger.debug("Filling prompt...")
         await textarea.fill(prompt)
@@ -472,11 +431,14 @@ async def _do_process(session, labeler, repo_url, repo_name, file_path, output_d
         os.makedirs(final_repo_output, exist_ok=True)
         
         out_path = os.path.join(final_repo_output, filename)
+        abs_out_path = os.path.abspath(out_path)
 
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(parsed, f, ensure_ascii=False, indent=2)
             f.flush()
             os.fsync(f.fileno())
+            
+        logger.info(f"✨ [SUCCESS] File saved to: {abs_out_path}")
         return True
 
     except json.JSONDecodeError as e:
@@ -536,28 +498,60 @@ async def run_phase3_synthesis(input_dir="method_evolutions", output_dir="ground
                 ]
                 results = await asyncio.gather(*tasks)
             else:
-                # Web mode: sequential
-                results = []
+                # Web mode: Parallel browsers worker pool
+                WEB_PARALLEL_BROWSERS = 1  # Giảm xuống 1 để đảm bảo máy không bị Lag/OOM và ghi file chuẩn xác
                 total = len(files)
-                for idx, f in enumerate(files, 1):
-                    logger.info(f"[{repo_name}] [{idx}/{total}] Processing: {os.path.basename(f)}")
-                    res = await process_method_file(None, labeler, repo_url, repo_name, f, repo_output, dynamic_prompt, None)
-                    results.append(res)
+                results = []
+                
+                logger.info(f"[{repo_name}] Khởi tạo {WEB_PARALLEL_BROWSERS} trình duyệt Camoufox song song...")
+                
+                labelers = [WebDeepSeekLabeler() for _ in range(WEB_PARALLEL_BROWSERS)]
+                for lbl in labelers:
+                    await lbl.init_browser()
+                
+                queue = asyncio.Queue()
+                for f in files:
+                    queue.put_nowait(f)
+                
+                async def worker(worker_id, lbl):
+                    worker_res = []
+                    while not queue.empty():
+                        f = await queue.get()
+                        current_idx = total - queue.qsize()
+                        logger.info(f"[{repo_name}] [Browser {worker_id}] [{current_idx}/{total}] Processing: {os.path.basename(f)}")
+                        res = await process_method_file(None, lbl, repo_url, repo_name, f, repo_output, dynamic_prompt, None)
+                        worker_res.append(res)
+                        queue.task_done()
+                        # Nghỉ ngắn giữa các mẫu để tránh bị bot detection
+                        await asyncio.sleep(random.uniform(5, 10)) # Tăng delay một chút cho an toàn
+                    return worker_res
+
+                worker_tasks = [asyncio.create_task(worker(i+1, labelers[i])) for i in range(WEB_PARALLEL_BROWSERS)]
+                worker_outputs = await asyncio.gather(*worker_tasks)
+                
+                # Gộp kết quả từ các worker
+                for out in worker_outputs:
+                    results.extend(out)
+
+                for lbl in labelers:
+                    await lbl.close()
 
             success = sum(1 for r in results if r)
             fail = len(results) - success
 
-            if fail == 0:
-                state_manager.update_phase(repo_url, 3, 'DONE', f"Labeled {success} methods")
+            if success > 0:
+                status_msg = f"Labeled {success} methods"
+                if fail > 0:
+                    status_msg += f" ({fail} failed)"
+                state_manager.update_phase(repo_url, 3, 'DONE', status_msg)
             else:
-                state_manager.update_phase(repo_url, 3, 'FAILED', f"{fail}/{len(results)} methods failed")
+                state_manager.update_phase(repo_url, 3, 'FAILED', f"All {len(results)} methods failed")
 
             logger.info(f"[{repo_name}] Phase 3 complete: {success} success, {fail} failed")
+
     finally:
         if session:
             await session.close()
-        if mode == "web":
-            await labeler.close()
 
     logger.info("Phase 3 (AI Synthesis) completed.")
 

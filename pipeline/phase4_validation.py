@@ -56,7 +56,7 @@ SMELL_SCHEMA = {
                     "required": ["method_role", "project_architecture"]
                 }
             },
-            "required": ["single_responsibility_violation", "domain_coupling", "semantic_conflict_with_metrics", "architectural_context"]
+            "required": ["single_responsibility_violation", "domain_coupling", "conflict_resolution", "architectural_context"]
         },
         "shotgun_surgery": {
             "type": "object",
@@ -193,39 +193,28 @@ async def run_phase4_validation(evo_dir="method_evolutions", gt_dir="ground_trut
                 invalid_count += 1
                 logger.debug(f"Invalid: {validation_res} in file {f}")
 
-        # Cân bằng Class (Downsampling) chống Data Imbalance
+        # Giữ lại TOÀN BỘ dữ liệu, không thực hiện Downsampling
         if valid_samples:
-            positives = []
-            negatives = []
-            for s in valid_samples:
-                # Trích xuất label từ output JSON string
-                try:
-                    out_json = json.loads(s.get("output", "{}"))
-                    lbl = out_json.get("label", "none")
-                except:
-                    lbl = "none"
-                if lbl == "none":
-                    negatives.append(s)
-                else:
-                    positives.append(s)
-
-            # Giữ tỷ lệ negative:positive = 3:1
             import random
-            max_negatives = max(10, len(positives) * 3) # Ít nhất 10 mẫu để tránh empty nếu không có code smell
-            
-            if len(negatives) > max_negatives:
-                # Lọc lấy các mẫu negative có độ tin cậy tự chấm cao nhất (tin rằng đây thực sự là code sạch)
-                negatives.sort(key=lambda x: json.loads(x.get("output", "{}")).get("confidence", 0), reverse=True)
-                negatives = negatives[:max_negatives]
-
-            balanced_samples = positives + negatives
-            random.shuffle(balanced_samples)
-
+            random.shuffle(valid_samples)
             with open(out_file, "a", encoding="utf-8") as outf:
-                for s in balanced_samples:
+                for s in valid_samples:
                     outf.write(json.dumps(s, ensure_ascii=False) + "\n")
             
-            logger.info(f"[{repo_name}] Downsampling: Giữ lại {len(positives)} Positive và {len(negatives)} Negative (từ {len(valid_samples)}).")
+            # Đếm positive/negative chỉ để báo cáo log
+            p_cnt = 0
+            n_cnt = 0
+            for s in valid_samples:
+                try:
+                    out_data = json.loads(s.get("output", "{}"))
+                    if out_data.get("final_decision", {}).get("label", "none") != "none":
+                        p_cnt += 1
+                    else:
+                        n_cnt += 1
+                except:
+                    n_cnt += 1
+            
+            logger.info(f"[{repo_name}] Đã xuất {len(valid_samples)} mẫu ({p_cnt} Positive, {n_cnt} Negative).")
         else:
             logger.info(f"[{repo_name}] 0 valid samples.")
 

@@ -8,9 +8,11 @@ load_dotenv()
 
 from pipeline.phase1_acquisition import run_phase1_acquisition
 from pipeline.phase2_engineering import run_phase2_engineering
+from pipeline.phase2_5_calibration import run_phase_2_5_calibration
 from pipeline.phase3_synthesis import run_phase3_synthesis, save_auth_flow
 from pipeline.phase4_validation import run_phase4_validation
 from utils.logger import get_logger
+from utils.state_manager import state_manager
 
 logger = get_logger("main")
 
@@ -43,21 +45,22 @@ async def main():
     
     # PHASE 2.5: Dynamic Threshold Calibration
     logger.info(">>> START PHASE 2.5: CALIBRATION")
-    from pipeline.phase2_5_calibration import run_phase_2_5_calibration
     run_phase_2_5_calibration()
-
-    # PHASE 3: AI Synthesis (DeepSeek Teacher Model)
+    
+    # PHASE 3: AI Synthesis (DeepSeek Distillation)
     logger.info(">>> START PHASE 3: AI SYNTHESIS")
     await run_phase3_synthesis(mode=args.mode)
     
-    # PHASE 4: Validation & Dataset Packaging
-    logger.info(">>> START PHASE 4: VALIDATION")
+    # PHASE 4: Validation & Dataset Compilation
+    logger.info(">>> START PHASE 4: DATASET VALIDATION")
     await run_phase4_validation()
     
-    logger.info("🎉 PIPELINE COMPLETE! Final dataset at dataset_output/final_dataset.jsonl")
+    logger.info("✅ All phases completed!")
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
-        logger.warning("Pipeline stopped by user.")
+        logger.warning("\nPipeline stopped by user.")
+    except Exception as e:
+        logger.error(f"Fatal error in pipeline: {e}")

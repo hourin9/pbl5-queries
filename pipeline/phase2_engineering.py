@@ -16,59 +16,53 @@ except ImportError:
 
 logger = get_logger(__name__)
 
-joern_lock = asyncio.Lock()  # Khóa chặn tương tác song song cpg server của joern
-
+# Cấu hình đa máy chủ Joern để phân tích song song thực thụ
+JOERN_ENDPOINTS = [
+    {"url": "localhost:8080", "sem": asyncio.Semaphore(1)},
+    {"url": "localhost:8081", "sem": asyncio.Semaphore(1)},
+    {"url": "localhost:8082", "sem": asyncio.Semaphore(1)},
+]
 
 class JoernServerClient:
-    def __init__(self, endpoint="localhost:8080"):
-        self.endpoint = endpoint
+    def __init__(self):
         self.tmp_dir = "temp_data"
         os.makedirs(self.tmp_dir, exist_ok=True)
-        # Ta không khởi tạo self.client ở đây để tránh capture event loop của main thread
 
-    def _execute_command(self, command):
+    def _execute_command(self, command, endpoint_url):
         """Hàm đồng bộ chạy trong thread, tự tạo loop nội bộ cho thư viện cpgqls"""
-        # Tạo và thiết lập một event loop mới cho riêng thread này
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-
         try:
-            client = CPGQLSClient(self.endpoint)
-            # execute() của thư viện sẽ tìm thấy 'loop' chúng ta vừa set
+            client = CPGQLSClient(endpoint_url)
             return client.execute(command)
         finally:
             loop.close()
 
     async def extract_features(self, repo_path, repo_url, target_methods=None):
-        """
-        target_methods: List of (file_path, method_name) to extract. 
-        If None, extract all (fallback).
-        """
-        async with joern_lock:
+        """Phân tích bằng server Joern. Tự động tìm server rảnh từ pool."""
+        # Tìm server đang rảnh trong JOERN_ENDPOINTS
+        endpoint_info = None
+        for ep in JOERN_ENDPOINTS:
+            if not ep["sem"].locked():
+                endpoint_info = ep
+                break
+        
+        # Nếu tất cả bận, ưu tiên lấy cái đầu tiên (sẽ phải chờ ở dòng async with)
+        if not endpoint_info:
+            endpoint_info = JOERN_ENDPOINTS[0]
+            
+        endpoint_url = endpoint_info["url"]
+        
+        async with endpoint_info["sem"]:
             try:
                 abs_repo_path = os.path.abspath(repo_path)
                 repo_name = os.path.basename(repo_path)
-                tmp_json = os.path.abspath(f"temp_data/joern_{repo_name}.json")
-                cpg_bin_path = os.path.abspath(os.path.join(self.tmp_dir, f"{repo_name}_cpg.bin"))
+                logger.info(f"[{repo_name}] Sử dụng Joern Server tại cổng {endpoint_url}")
                 
-                # 1. Tạo file CPG offline bằng joern-parse (để cấp đủ 12GB RAM)
-                if os.path.exists(cpg_bin_path):
-                    os.remove(cpg_bin_path)
+                
+                os.system('git config --global --add safe.directory "*"')
 
-                logger.info(f"[{repo_name}] Đang tạo CPG bằng joern-parse (12GB RAM, Language: javasrc)...")
-                joern_parse_bin = "/home/lambda/bin/joern/joern-cli/joern-parse"
-                # Ép dùng javasrc và TẮT delombok để tránh bỏ qua file nếu lỗi resolve phụ thuộc
-                cmd_build_cpg = f"{joern_parse_bin} --language javasrc -J-Xmx12288m {abs_repo_path} --output {cpg_bin_path} --frontend-args --delombok-mode no-delombok"
-                proc = await asyncio.create_subprocess_shell(
-                    cmd_build_cpg,
-                    stdout=asyncio.subprocess.PIPE,
-                    stderr=asyncio.subprocess.PIPE
-                )
-                await proc.communicate()
-                
-                if not os.path.exists(cpg_bin_path):
-                    logger.error(f"[{repo_name}] joern-parse failed to create CPG bin.")
-                    return None
+                tmp_json = os.path.abspath(f"temp_data/joern_{repo_name}.json")
 
                 # 2. Tạo logic filter cho Joern
                 method_filter = ""
@@ -76,55 +70,69 @@ class JoernServerClient:
                     unique_base_files = list(set([os.path.basename(f) for f in [m[0] for m in target_methods]]))
                     target_files_str = ', '.join([f'"{f}"' for f in unique_base_files])
                     # Dùng fuzzy endsWith để khớp đường dẫn
-                    method_filter = f"""  val targetFiles = Set({target_files_str})
-  val filteredMethods = allMethods.filter(m => targetFiles.exists(t => m.filename.endsWith(t))).l"""
+                    method_filter = f"""    val targetFiles = Set({target_files_str})
+    val filteredMethods = allMethods.filter(m => targetFiles.exists(t => m.filename.endsWith(t))).l"""
                 else:
-                    method_filter = "  val filteredMethods = allMethods.l"
+                    method_filter = "    val filteredMethods = allMethods.l"
 
-                # 3. Script Scala nạp CPG vào Server và phân tích
+                import random
+                import string
+                # Tạo một ID ngẫu nhiên để không bị trùng project trong workspace của Joern
+                rand_id = ''.join(random.choices(string.ascii_lowercase + string.digits, k=6))
+                unique_project_name = f"{repo_name}_{rand_id}"
+
+                # 3. Script Scala nhập mã trực tiếp phân tích trên Server
                 scala_script = f"""{{
   try {{
-    workspace.projects.filter(_.name.contains("{repo_name}")).foreach(p => {{ close(p.name); delete(p.name) }})
-    // Nạp file CPG đã tạo offline vào Server
-    val p = importCpg("{cpg_bin_path}")
-    val cpg = p.get
     import ujson._
-    val allMethods = cpg.method.filterNot(m => m.name.startsWith("<") || m.filename.contains("test") || m.filename.contains("mock")).l
-{method_filter}
-    val nodesData = filteredMethods.flatMap {{ method => 
+    
+    // Nạp mã nguồn sử dụng tên project duy nhất
+    println(s"DEBUG: Importing code from {abs_repo_path} into project {unique_project_name}")
+    val cpg = importCode(inputPath="{abs_repo_path}", projectName="{unique_project_name}")
+    
+    // Lấy tất cả methods của dự án
+    val allMethods = cpg.method.isExternal(false).l
+    println(s"DEBUG: [{repo_name}] Total non-external methods: ${{allMethods.size}}")
+
+    val nodesData = allMethods.flatMap {{ method => 
       val lineStart = method.lineNumber.getOrElse(0)
       val lineEnd = method.lineNumberEnd.getOrElse(0)
       val loc = if (lineStart > 0 && lineEnd > 0) (lineEnd - lineStart + 1) else 0
-      val extCalls = method.callee.name.filterNot(_.startsWith("<operator")).dedup.l
-      val sig = method.signature
+      
       Some(Obj(
         "id" -> method.id.toString, 
         "name" -> method.name, 
-        "signature" -> sig,
+        "signature" -> method.signature,
         "file_path" -> method.filename, 
         "features" -> Obj(
           "loc" -> loc, 
           "cyclomatic_complexity" -> (method.controlStructure.size + 1),
           "fan_in" -> method.caller.size, 
           "fan_out" -> method.callee.size, 
-          "external_calls" -> extCalls,
+          "external_calls" -> method.callee.name.filterNot(_.startsWith("<operator")).dedup.l,
           "code" -> method.code
         )
       ))
     }}
-    os.write.over(os.Path("{tmp_json}"), ujson.write(Obj("nodes" -> nodesData)))
+    
+    val outputJson = Obj("nodes" -> nodesData)
+    os.write.over(os.Path("{tmp_json}"), ujson.write(outputJson))
+    println(s"DEBUG: Success! Metrics written to {tmp_json}")
+    
+    // Dọn dẹp project ngay sau khi xong để giải phóng RAM
+    delete("{unique_project_name}")
     "SUCCESS"
   }} catch {{
     case e: Exception => 
-      println("SCALA ERROR: " + e.getMessage)
-      "ERROR: " + e.getMessage
+      val msg = "SCALA ERROR: " + e.getMessage
+      println(msg)
+      msg
   }}
 }}"""
-                
-                res = await asyncio.to_thread(self._execute_command, scala_script)
+                res = await asyncio.to_thread(self._execute_command, scala_script, endpoint_url)
                 
                 if not os.path.exists(tmp_json):
-                    logger.error(f"Joern Server fail [{repo_name}]. Response: {res}")
+                    logger.error(f"Joern Server fail [{repo_name}] at {endpoint_url}. Response: {res}")
                     return None
 
                 try:
@@ -147,63 +155,70 @@ def process_commit_history_worker(repo_path):
     logger.info(f"[CPU Worker] Bắt đầu duyệt PyDriller trên: {repo_path}")
     changes_by_method = {}
 
-    # Chỉ tính extensions chứa logic nghiệp vụ Java (Bỏ qua C/C++ theo yêu cầu)
+    # Chỉ tính extensions chứa logic nghiệp vụ Java
     exts = [".java"]
 
     try:
         from datetime import datetime, timedelta
-        dt_since = datetime.now() - timedelta(days=365*5)
+        dt_since = datetime.now() - timedelta(days=365*10)
         repo_obj = Repository(
             repo_path, 
             only_no_merge=True, 
             only_modifications_with_file_types=exts,
             since=dt_since
         )
-        for commit in repo_obj.traverse_commits():
+        repo_iter = iter(repo_obj.traverse_commits())
+        count = 0
+        while True:
+            try:
+                commit = next(repo_iter)
+                count += 1
+                if count % 100 == 0:
+                    logger.info(f"[CPU Worker] {repo_path}: Đã duyệt {count} commits...")
+            except StopIteration:
+                break
+            except Exception as e:
+                logger.warning(f"Lỗi Git tại commit {count} (có thể do lazy load): {e}. Đang lướt kế...")
+                continue
+
             try:
                 # 1. NOISE FILTERING: Bỏ qua commit refactor/style/docs
                 msg_lower = commit.msg.lower()
-                noise_keywords = ["[ci]", "format", "style", "docs", "readme"]
-                if any(kw in msg_lower for kw in noise_keywords):
+                if any(kw in msg_lower for kw in ["[ci]", "format", "style", "docs", "readme"]):
                     continue
 
-                # 2. CO-CHANGED CLASSES: Chỉ lấy các file thuộc whitelist exts
+                # 2. Xử lý tập trung các tệp tin thay đổi
                 commit_classes = set()
-                for f in commit.modified_files:
-                    p = f.new_path or f.old_path
-                    if p and any(p.endswith(ex) for ex in exts):
-                        commit_classes.add(p.split('/')[-1])
-
+                relevant_modifications = []
                 for m_file in commit.modified_files:
-                    # Dùng new_path hoặc old_path để lấy đường dẫn tương đối chuẩn (ví dụ: src/main/java/...)
                     path = m_file.new_path or m_file.old_path
-                    if not path:
-                        continue
-                        
+                    if path and any(path.endswith(ex) for ex in exts):
+                        commit_classes.add(path.split('/')[-1])
+                        relevant_modifications.append(m_file)
+
+                # 3. Phân tích phương thức thay đổi
+                for m_file in relevant_modifications:
+                    path = m_file.new_path or m_file.old_path
                     for method in m_file.changed_methods:
-                        # Chuẩn hóa tên method: PyDriller Java thường trả về ClassName::MethodName
-                        # Chúng ta chỉ lấy phần MethodName để khớp với Joern
                         clean_method_name = method.name.split("::")[-1]
                         key = (path, clean_method_name)
 
-                        # 3. DEDUPLICATION: Tránh lặp lại method giống nhau trong cùng 1 file ở cùng commit
+                        # DEDUPLICATION: Tránh lặp lại method giống nhau trong cùng 1 file ở cùng commit
                         if key in changes_by_method and changes_by_method[key][-1]["h"] == commit.hash[:8]:
                             continue
 
                         # Loại bỏ chính class hiện tại để chỉ giữ lại các list classes khác
                         other_classes = list(commit_classes - {path.split('/')[-1]})
 
-                        change = {
+                        changes_by_method.setdefault(key, []).append({
                             "h": commit.hash[:8],
                             "d": str(commit.author_date),
-                            "msg": commit.msg.strip(),
+                            "msg": commit.msg.strip()[:100],
                             "nd": commit.deletions,
                             "ni": commit.insertions,
                             "nf": commit.files,
-                            "cxc": method.complexity,
                             "co_classes": other_classes
-                        }
-                        changes_by_method.setdefault(key, []).append(change)
+                        })
             except Exception as commit_err:
                 # Bỏ qua commit lỗi (thường do shallow clone thiếu lịch sử diff)
                 logger.warning(f"Bỏ qua commit {commit.hash[:8]} do lỗi: {commit_err}")
@@ -225,25 +240,38 @@ def check_joern_health(host="localhost", port=8080, timeout=3):
         return False
 
 async def run_phase2_engineering(
-    output_dir="method_evolutions", joern_endpoint="localhost:8080"
+    output_dir="method_evolutions"
 ):
+    # Khắc phục lỗi Dubious Ownership của Git trước khi bất kỳ file/worker nào chạy
+    os.system('git config --global --add safe.directory "*"')
+
     os.makedirs(output_dir, exist_ok=True)
     repos = state_manager.get_pending_repos(2)  # [(url, name), ...]
     if not repos:
         logger.info("Không có Repos nào cần chạy Phase 2.")
         return
 
-    # Heartbeat Check Joern
-    host, port = joern_endpoint.split(":")
-    if not check_joern_health(host, int(port)):
-        logger.error(f"❌ CPG Server (Joern) at {joern_endpoint} is DOWN! Phase 2 cannot proceed.")
+    global JOERN_ENDPOINTS
+    # Heartbeat Check toàn bộ Server Pool và lọc ra các máy chủ còn sống
+    alive_endpoints = []
+    for ep in JOERN_ENDPOINTS:
+        host, port = ep["url"].split(":")
+        if check_joern_health(host, int(port)):
+            alive_endpoints.append(ep)
+
+    if not alive_endpoints:
+        logger.error("❌ TẤT CẢ CPG Server (Joern Pool) đều MẤT KẾT NỐI! Vui lòng khởi động ít nhất 1 server.")
         return
+    else:
+        logger.info(f"✅ Hệ thống bắt được tín hiệu từ {len(alive_endpoints)} Joern Server đang rảnh rỗi. Đang làm mới Pool.")
+        JOERN_ENDPOINTS = alive_endpoints
 
     logger.info(f"Phase 2: Bắt đầu xử lý {len(repos)} repository.")
-    joern_client = JoernServerClient(joern_endpoint)
+    joern_client = JoernServerClient()
+
 
     # Setup process pool cho PyDriller
-    max_workers = min(os.cpu_count() or 4, 8)
+    max_workers = 2
     executor = ProcessPoolExecutor(max_workers=max_workers)
     loop = asyncio.get_event_loop()
 
