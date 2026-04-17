@@ -396,7 +396,7 @@ async def _do_process(session, labeler, repo_url, repo_name, file_path, output_d
         os.path.join(output_dir, "no_smells", filename)
     ]
     if any(os.path.exists(p) for p in exist_check):
-        return True
+        return "skipped_exists"
 
     try:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -404,7 +404,7 @@ async def _do_process(session, labeler, repo_url, repo_name, file_path, output_d
 
         ai_input = build_ai_input(data)
         if not ai_input:
-            return True
+            return "skipped_poverty"
 
         if session is not None:
             raw_response = await labeler.get_teacher_explanation(session, ai_input, dynamic_prompt)
@@ -412,7 +412,7 @@ async def _do_process(session, labeler, repo_url, repo_name, file_path, output_d
             raw_response = await labeler.get_teacher_explanation(ai_input, dynamic_prompt)
 
         if not raw_response or getattr(labeler, 'rate_limit_hit', False):
-            return False
+            return "failed"
 
         # Clean markdown fences if present
         clean = raw_response.strip()
@@ -439,14 +439,14 @@ async def _do_process(session, labeler, repo_url, repo_name, file_path, output_d
             os.fsync(f.fileno())
             
         logger.info(f"✨ [SUCCESS] File saved to: {abs_out_path}")
-        return True
+        return "written"
 
     except json.JSONDecodeError as e:
         logger.error(f"JSON decode error from DeepSeek ({filename}): {e}")
-        return False
+        return "failed"
     except Exception as e:
         logger.error(f"AI error for {filename} (Repo {repo_name}): {e}")
-        return False
+        return "failed"
 
 
 # ---------------------------------------------------------------------------
@@ -522,8 +522,10 @@ async def run_phase3_synthesis(input_dir="method_evolutions", output_dir="ground
                         res = await process_method_file(None, lbl, repo_url, repo_name, f, repo_output, dynamic_prompt, None)
                         worker_res.append(res)
                         queue.task_done()
-                        # Nghỉ ngắn giữa các mẫu để tránh bị bot detection
-                        await asyncio.sleep(random.uniform(5, 10)) # Tăng delay một chút cho an toàn
+                        
+                        # CHỈ NGHỈ NGẮN NẾU THỰC SỰ CÓ GỌI DEEPSEEK, TRÁNH LÃNG PHÍ THỜI GIAN VỚI CÁC FILE BỊ SKIP
+                        if res not in ["skipped_poverty", "skipped_exists"]:
+                            await asyncio.sleep(random.uniform(5, 10)) # Tăng delay một chút cho an toàn
                     return worker_res
 
                 worker_tasks = [asyncio.create_task(worker(i+1, labelers[i])) for i in range(WEB_PARALLEL_BROWSERS)]
@@ -536,18 +538,28 @@ async def run_phase3_synthesis(input_dir="method_evolutions", output_dir="ground
                 for lbl in labelers:
                     await lbl.close()
 
-            success = sum(1 for r in results if r)
-            fail = len(results) - success
+            # Đếm số lượng files THỰC SỰ ĐƯỢC LƯU TRONG THƯ MỤC ground_truth/...
+            smells_dir = os.path.join(repo_output, "smells")
+            no_smells_dir = os.path.join(repo_output, "no_smells")
+            smells_count = len(glob.glob(os.path.join(smells_dir, "*.json"))) if os.path.exists(smells_dir) else 0
+            no_smells_count = len(glob.glob(os.path.join(no_smells_dir, "*.json"))) if os.path.exists(no_smells_dir) else 0
+            actual_saved = smells_count + no_smells_count
 
-            if success > 0:
-                status_msg = f"Labeled {success} methods"
+            skipped_poverty = sum(1 for r in results if r == "skipped_poverty")
+            fail = sum(1 for r in results if r == "failed")
+            
+            # Nếu repo này có những method đã thành công hoặc bị loại do cơ chế hợp lý, vẫn duyệt qua là DONE
+            if actual_saved > 0 or skipped_poverty > 0:
+                status_msg = f"Saved {actual_saved}/{len(files)} methods"
+                if skipped_poverty > 0:
+                    status_msg += f" (Skipped {skipped_poverty} <3 commits)"
                 if fail > 0:
-                    status_msg += f" ({fail} failed)"
+                    status_msg += f" (Failed {fail})"
                 state_manager.update_phase(repo_url, 3, 'DONE', status_msg)
             else:
-                state_manager.update_phase(repo_url, 3, 'FAILED', f"All {len(results)} methods failed")
+                state_manager.update_phase(repo_url, 3, 'FAILED', f"All {len(files)} methods failed (or saved 0)")
 
-            logger.info(f"[{repo_name}] Phase 3 complete: {success} success, {fail} failed")
+            logger.info(f"[{repo_name}] Phase 3 complete: Saved {actual_saved}, Skipped (<3 commits) {skipped_poverty}, Failed {fail}")
 
     finally:
         if session:
