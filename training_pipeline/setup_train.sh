@@ -36,7 +36,7 @@ fi
 
 # 3. Cài đặt các thư viện cần thiết thông qua uv add
 echo "⏳ Đang cài đặt dependencies (quá trình này sẽ diễn ra rất nhanh nhờ uv)..."
-uv add torch transformers peft unsloth accelerate bitsandbytes wandb gdown
+uv add torch transformers peft unsloth accelerate bitsandbytes wandb gdown xformers triton trl
 
 # Theo khuyến nghị cài đặt của unsloth
 

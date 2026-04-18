@@ -135,7 +135,6 @@ def main():
         max_length=config.max_seq_length,
         dataset_num_proc=2,
         packing=config.packing,
-        group_by_length=config.group_by_length,
         
         # Tự động chọn Float16 hoặc BFloat16 do tương thích của máy
         fp16=not torch.cuda.is_bf16_supported(),
