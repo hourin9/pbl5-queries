@@ -1,3 +1,4 @@
+from unsloth import FastLanguageModel
 import os
 import torch
 import argparse
@@ -5,7 +6,6 @@ import urllib.request
 import gdown
 from transformers import EarlyStoppingCallback
 from trl import SFTTrainer, SFTConfig
-from unsloth import FastLanguageModel
 import wandb
 
 from config import TrainingConfig
