@@ -15,14 +15,13 @@ fi
 # 2. Khởi tạo một project uv cục bộ nếu chưa có
 if [ ! -f pyproject.toml ]; then
     echo "📄 Khởi tạo môi trường uv..."
-    uv init --app
+    uv init
+    uv add torch transformers peft unsloth accelerate bitsandbytes wandb gdown
 fi
 
 # 3. Cài đặt các thư viện cần thiết thông qua uv add
 echo "⏳ Đang cài đặt dependencies (quá trình này sẽ diễn ra rất nhanh nhờ uv)..."
 
 # Theo khuyến nghị cài đặt của unsloth
-uv add "unsloth[colab-new]@git+https://github.com/unslothai/unsloth.git"
-uv add "xformers<0.0.27" "trl<0.9.0" peft accelerate bitsandbytes wandb gdown
 
 echo "✅ Hoàn tất cài đặt môi trường!"
