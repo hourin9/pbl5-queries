@@ -89,7 +89,12 @@ def main():
         bias = config.bias,
         use_gradient_checkpointing = config.use_gradient_checkpointing,
         random_state = config.seed,
+        use_rslora = config.use_rslora,
     )
+    
+    # 3.5 Áp dụng Dropout (Anti-overfitting)
+    model.config.attention_dropout = config.attention_dropout
+    model.config.hidden_dropout = config.hidden_dropout
     
     # 4. Load & Formatting Dataset
     print("⚙️ Chuẩn bị tập dữ liệu và tiền xử lý ChatML...")
@@ -114,6 +119,7 @@ def main():
         per_device_eval_batch_size=config.per_device_eval_batch_size,
         gradient_accumulation_steps=config.gradient_accumulation_steps,
         warmup_steps=config.warmup_steps,
+        warmup_ratio=config.warmup_ratio,
         num_train_epochs=config.num_train_epochs,
         learning_rate=config.learning_rate,
         
@@ -128,6 +134,8 @@ def main():
         dataset_text_field="text",
         max_length=config.max_seq_length,
         dataset_num_proc=2,
+        packing=config.packing,
+        group_by_length=config.group_by_length,
         
         # Tự động chọn Float16 hoặc BFloat16 do tương thích của máy
         fp16=not torch.cuda.is_bf16_supported(),
@@ -144,7 +152,8 @@ def main():
         lr_scheduler_type=config.lr_scheduler_type,
         seed=config.seed,
         report_to=config.report_to,
-        load_best_model_at_end=True # Yêu cầu restore model best checkpoint sau khi end
+        load_best_model_at_end=True, # Yêu cầu restore model best checkpoint sau khi end
+        metric_for_best_model="eval_loss"
     )
     
     trainer = SFTTrainer(
