@@ -5,13 +5,13 @@ from dataclasses import dataclass
 class TrainingConfig:
     # Model Config
     model_name: str = "unsloth/Qwen2.5-Coder-0.5B-Instruct"
-    max_seq_length: int = 8192  # Tùy chỉnh theo mức độ dài của method source
+    max_seq_length: int = 4096  # Tùy chỉnh theo mức độ dài của method source
     load_in_4bit: bool = True
     dtype = None # Auto
     
     # LoRA Config
-    r: int = 64
-    lora_alpha: int = 128
+    r: int = 32
+    lora_alpha: int = 64
     lora_dropout: float = 0.0
     bias: str = "none"
     use_gradient_checkpointing: str = "unsloth"
@@ -23,7 +23,7 @@ class TrainingConfig:
     train_on_responses_only: bool = True # Chỉ tính loss phần generate JSON
     
     # Training Arguments
-    per_device_train_batch_size: int = 2
+    per_device_train_batch_size: int = 1
     per_device_eval_batch_size: int = 2
     gradient_accumulation_steps: int = 16
     warmup_steps: int = 5
