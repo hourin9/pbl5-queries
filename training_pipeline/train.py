@@ -126,7 +126,7 @@ def main():
         
         # Di chuyển tham số SFTTrainer cũ vào form SFTConfig theo chuẩn mới
         dataset_text_field="text",
-        max_seq_length=config.max_seq_length,
+        max_length=config.max_seq_length,
         dataset_num_proc=2,
         
         # Tự động chọn Float16 hoặc BFloat16 do tương thích của máy
