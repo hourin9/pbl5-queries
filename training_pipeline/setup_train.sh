@@ -16,11 +16,11 @@ fi
 if [ ! -f pyproject.toml ]; then
     echo "📄 Khởi tạo môi trường uv..."
     uv init
-    uv add torch transformers peft unsloth accelerate bitsandbytes wandb gdown
 fi
 
 # 3. Cài đặt các thư viện cần thiết thông qua uv add
 echo "⏳ Đang cài đặt dependencies (quá trình này sẽ diễn ra rất nhanh nhờ uv)..."
+uv add torch transformers peft unsloth accelerate bitsandbytes wandb gdown
 
 # Theo khuyến nghị cài đặt của unsloth
 
