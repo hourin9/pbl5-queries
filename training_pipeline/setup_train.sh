@@ -2,7 +2,23 @@
 
 echo "🚀 Đang khởi tạo môi trường training trên Cloud..."
 
-# 1. Kiểm tra và cài đặt uv
+# 1. Cài đặt Compiler (triton yêu cầu gcc/g++ để biên dịch các custom kernel của unsloth)
+if ! command -v gcc &> /dev/null
+then
+    echo "🛠️ Đang cài đặt C/C++ Compiler (gcc, g++, build-essential)..."
+    if [ -x "$(command -v apt-get)" ]; then
+        sudo apt-get update
+        sudo apt-get install -y gcc g++ build-essential
+    elif [ -x "$(command -v yum)" ]; then
+        sudo yum install -y gcc gcc-c++ make
+    else
+        echo "⚠️ Không tìm thấy apt-get hoặc yum. Vui lòng tự cài đặt gcc/g++."
+    fi
+else
+    echo "✅ Compiler (gcc) đã có sẵn."
+fi
+
+# 2. Kiểm tra và cài đặt uv
 if ! command -v uv &> /dev/null
 then
     echo "📦 Đang cài đặt uv..."
