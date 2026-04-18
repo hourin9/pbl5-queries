@@ -4,8 +4,8 @@ from dataclasses import dataclass
 @dataclass
 class TrainingConfig:
     # Model Config
-    model_name: str = "unsloth/Qwen2.5-Coder-7B-Instruct"
-    max_seq_length: int = 16384  # Tùy chỉnh theo mức độ dài của method source
+    model_name: str = "unsloth/Qwen2.5-Coder-0.5B-Instruct"
+    max_seq_length: int = 8192  # Tùy chỉnh theo mức độ dài của method source
     load_in_4bit: bool = True
     dtype = None # Auto
     
@@ -17,7 +17,7 @@ class TrainingConfig:
     use_gradient_checkpointing: str = "unsloth"
     
     # Dataset Config
-    data_path: str = "/content/drive/MyDrive/PBL5/final_dataset.jsonl"
+    data_path: str = "./final_dataset.jsonl"
     val_split_size: float = 0.1 # 10% dành cho đánh giá
     positive_sample_weight: int = 5 # Hệ số oversample/tăng trọng số các mẫu positive (có code smell)
     train_on_responses_only: bool = True # Chỉ tính loss phần generate JSON, chống học vẹt prompt
@@ -50,4 +50,4 @@ class TrainingConfig:
     # Môi trường Weights & Biases
     report_to: str = "wandb"
     wandb_project: str = "PBL5-Code-Smell-Distillation"
-    wandb_run_name: str = "qwen2.5-coder-7b-run1"
+    wandb_run_name: str = "qwen2.5-coder-0.5b-run1"

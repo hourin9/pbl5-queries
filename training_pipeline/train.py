@@ -1,5 +1,8 @@
 import os
 import torch
+import argparse
+import urllib.request
+import gdown
 from transformers import EarlyStoppingCallback
 from trl import SFTTrainer, SFTConfig
 from unsloth import FastLanguageModel
@@ -8,8 +11,58 @@ import wandb
 from config import TrainingConfig
 from dataset_utils import load_and_prepare_data
 
+
+def download_dataset(url, dest_path):
+    print(f"📥 Đang tải dataset từ: {url}")
+    if "drive.google.com" in url:
+        gdown.download(url, dest_path, quiet=False, fuzzy=True)
+    else:
+        urllib.request.urlretrieve(url, dest_path)
+    print(f"✅ Đã tải dataset thành công vào: {dest_path}")
+
+
+def get_model_name(size):
+    mapping = {
+        "0.5B": "unsloth/Qwen2.5-Coder-0.5B-Instruct",
+        "1.5B": "unsloth/Qwen2.5-Coder-1.5B-Instruct",
+        "3B": "unsloth/Qwen2.5-Coder-3B-Instruct",
+        "7B": "unsloth/Qwen2.5-Coder-7B-Instruct",
+    }
+    return mapping.get(size.upper(), "unsloth/Qwen2.5-Coder-0.5B-Instruct")
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="PBL5 Code Smell Distillation Training Pipeline")
+    parser.add_argument("--model_size", type=str, default="0.5B", choices=["0.5B", "1.5B", "3B", "7B", "0.5b", "1.5b", "3b", "7b"], help="Size of Qwen2.5-Coder model to use")
+    parser.add_argument("--dataset_url", type=str, default=None, help="Public URL (Google Drive or direct) to download the .jsonl dataset")
+    parser.add_argument("--data_path", type=str, default="./final_dataset.jsonl", help="Local path to the dataset file")
+    parser.add_argument("--output_dir", type=str, default="outputs_qwen_coder", help="Directory to save the output model")
+    parser.add_argument("--batch_size", type=int, default=2, help="Per device batch size")
+    parser.add_argument("--epochs", type=int, default=3, help="Number of training epochs")
+    parser.add_argument("--learning_rate", type=float, default=2e-4, help="Learning rate")
+    parser.add_argument("--wandb_project", type=str, default="PBL5-Code-Smell-Distillation", help="WandB project name")
+    parser.add_argument("--wandb_run_name", type=str, default=None, help="WandB run name (default auto-generated based on model size)")
+    return parser.parse_args()
+
+
 def main():
+    args = parse_args()
     config = TrainingConfig()
+    
+    # Ghi đè cấu hình từ argparse
+    config.model_name = get_model_name(args.model_size)
+    config.data_path = args.data_path
+    config.output_dir = args.output_dir
+    config.per_device_train_batch_size = args.batch_size
+    config.per_device_eval_batch_size = args.batch_size
+    config.num_train_epochs = args.epochs
+    config.learning_rate = args.learning_rate
+    config.wandb_project = args.wandb_project
+    config.wandb_run_name = args.wandb_run_name or f"qwen2.5-coder-{args.model_size.lower()}-run"
+    
+    # 0. Download dataset if URL is provided
+    if args.dataset_url:
+        download_dataset(args.dataset_url, config.data_path)
     
     # 1. Khởi tạo Weights & Biases
     print("🚀 Đang thiết lập Weights & Biases...")
@@ -41,7 +94,7 @@ def main():
     # 4. Load & Formatting Dataset
     print("⚙️ Chuẩn bị tập dữ liệu và tiền xử lý ChatML...")
     if not os.path.exists(config.data_path):
-        raise FileNotFoundError(f"Không tìm thấy tập dữ liệu tại {config.data_path}!")
+        raise FileNotFoundError(f"Không tìm thấy tập dữ liệu tại {config.data_path}! Bạn đã dùng --dataset_url chưa?")
     
     train_dataset, val_dataset = load_and_prepare_data(
         config.data_path, tokenizer, 
