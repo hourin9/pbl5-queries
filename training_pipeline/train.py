@@ -128,7 +128,6 @@ def main():
         per_device_eval_batch_size=config.per_device_eval_batch_size,
         gradient_accumulation_steps=config.gradient_accumulation_steps,
         warmup_steps=config.warmup_steps,
-        warmup_ratio=config.warmup_ratio,
         num_train_epochs=config.num_train_epochs,
         learning_rate=config.learning_rate,
         
