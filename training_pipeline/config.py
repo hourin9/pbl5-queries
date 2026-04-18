@@ -24,7 +24,7 @@ class TrainingConfig:
     
     # Training Arguments
     per_device_train_batch_size: int = 1
-    per_device_eval_batch_size: int = 2
+    per_device_eval_batch_size: int = 1
     gradient_accumulation_steps: int = 16
     warmup_steps: int = 5
     warmup_ratio: float = 0.1 # Tăng warmup để tránh sốc gradient

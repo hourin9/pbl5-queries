@@ -33,15 +33,16 @@ def get_model_name(size):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="PBL5 Code Smell Distillation Training Pipeline")
-    parser.add_argument("--model_size", type=str, default="0.5B", choices=["0.5B", "1.5B", "3B", "7B", "0.5b", "1.5b", "3b", "7b"], help="Size of Qwen2.5-Coder model to use")
+    # Để default=None để không ghi đè giá trị trong TrainingConfig trừ khi người dùng chỉ định
+    parser.add_argument("--model_size", type=str, default=None, choices=["0.5B", "1.5B", "3B", "7B", "0.5b", "1.5b", "3b", "7b"], help="Size of Qwen2.5-Coder model to use")
     parser.add_argument("--dataset_url", type=str, default=None, help="Public URL (Google Drive or direct) to download the .jsonl dataset")
-    parser.add_argument("--data_path", type=str, default="./final_dataset.jsonl", help="Local path to the dataset file")
-    parser.add_argument("--output_dir", type=str, default="outputs_qwen_coder", help="Directory to save the output model")
-    parser.add_argument("--batch_size", type=int, default=2, help="Per device batch size")
-    parser.add_argument("--epochs", type=int, default=3, help="Number of training epochs")
-    parser.add_argument("--learning_rate", type=float, default=2e-4, help="Learning rate")
-    parser.add_argument("--wandb_project", type=str, default="PBL5-Code-Smell-Distillation", help="WandB project name")
-    parser.add_argument("--wandb_run_name", type=str, default=None, help="WandB run name (default auto-generated based on model size)")
+    parser.add_argument("--data_path", type=str, default=None, help="Local path to the dataset file")
+    parser.add_argument("--output_dir", type=str, default=None, help="Directory to save the output model")
+    parser.add_argument("--batch_size", type=int, default=None, help="Per device batch size")
+    parser.add_argument("--epochs", type=int, default=None, help="Number of training epochs")
+    parser.add_argument("--learning_rate", type=float, default=None, help="Learning rate")
+    parser.add_argument("--wandb_project", type=str, default=None, help="WandB project name")
+    parser.add_argument("--wandb_run_name", type=str, default=None, help="WandB run name")
     return parser.parse_args()
 
 
@@ -49,16 +50,24 @@ def main():
     args = parse_args()
     config = TrainingConfig()
     
-    # Ghi đè cấu hình từ argparse
-    config.model_name = get_model_name(args.model_size)
-    config.data_path = args.data_path
-    config.output_dir = args.output_dir
-    config.per_device_train_batch_size = args.batch_size
-    config.per_device_eval_batch_size = args.batch_size
-    config.num_train_epochs = args.epochs
-    config.learning_rate = args.learning_rate
-    config.wandb_project = args.wandb_project
-    config.wandb_run_name = args.wandb_run_name or f"qwen2.5-coder-{args.model_size.lower()}-run"
+    # Chỉ ghi đè cấu hình từ argparse nếu người dùng có truyền tham số (khác None)
+    if args.model_size:
+        config.model_name = get_model_name(args.model_size)
+    if args.data_path:
+        config.data_path = args.data_path
+    if args.output_dir:
+        config.output_dir = args.output_dir
+    if args.batch_size:
+        config.per_device_train_batch_size = args.batch_size
+        config.per_device_eval_batch_size = args.batch_size
+    if args.epochs:
+        config.num_train_epochs = args.epochs
+    if args.learning_rate:
+        config.learning_rate = args.learning_rate
+    if args.wandb_project:
+        config.wandb_project = args.wandb_project
+    
+    config.wandb_run_name = args.wandb_run_name or f"{config.model_name.split('/')[-1].lower()}-run"
     
     # 0. Download dataset if URL is provided
     if args.dataset_url:
