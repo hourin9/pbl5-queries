@@ -48,6 +48,96 @@ def parse_args():
     return parser.parse_args()
 
 
+def preprocess_logits_for_metrics(logits, labels):
+    if isinstance(logits, tuple):
+        logits = logits[0]
+    return logits.argmax(dim=-1)
+
+
+def compute_metrics(eval_preds):
+    # Chúng ta sẽ import tokenizer cục bộ hoặc giả định nó đã được khởi tạo
+    # Trong môi trường Trainer, chúng ta có thể truy cập qua global hoặc xử lý đặc biệt
+    # Ở đây, để an toàn cho pickling, ta sử dụng regex và decode thủ công nếu cần
+    # Tuy nhiên, Trainer thường yêu cầu tokenizer có sẵn.
+    from transformers import AutoTokenizer
+    # Khởi tạo lại tokenizer nhanh từ cache để decode nếu global bị mất
+    # Hoặc đơn giản là dùng global tokenizer (thường hoạt động tốt nếu định nghĩa ở mức module)
+    global global_tokenizer
+    
+    preds, labels = eval_preds
+    # Replace -100 with pad token id
+    preds = np.where(labels != -100, preds, global_tokenizer.pad_token_id)
+    labels_ids = np.where(labels != -100, labels, global_tokenizer.pad_token_id)
+    
+    decoded_preds = global_tokenizer.batch_decode(preds, skip_special_tokens=True)
+    decoded_labels = global_tokenizer.batch_decode(labels_ids, skip_special_tokens=True)
+    
+    y_true = []
+    y_pred = []
+    import re
+    
+    for p, l in zip(decoded_preds, decoded_labels):
+        true_match = re.search(r'"label"\s*:\s*"([^"]+)"', l)
+        pred_match = re.search(r'"label"\s*:\s*"([^"]+)"', p)
+        
+        y_true.append(true_match.group(1).lower() if true_match else "none")
+        y_pred.append(pred_match.group(1).lower() if pred_match else "none")
+        
+    precision, recall, f1, _ = precision_recall_fscore_support(
+        y_true, y_pred, average='macro', zero_division=0
+    )
+    return {"precision": precision, "recall": recall, "f1": f1}
+
+
+class SemanticLossTrainer(SFTTrainer):
+    def compute_loss(self, model, inputs, return_outputs=False, **kwargs):
+        loss, outputs = super().compute_loss(model, inputs, return_outputs=True, **kwargs)
+        
+        try:
+            tokenizer = self.processing_class if hasattr(self, 'processing_class') else self.model.config.tokenizer
+            batch_size = inputs["input_ids"].size(0)
+            logits = outputs.logits
+            semantic_penalty = 0.0
+            
+            none_ids = set(tokenizer.encode('none', add_special_tokens=False) + 
+                           tokenizer.encode('"none"', add_special_tokens=False))
+            
+            for b in range(batch_size):
+                text = tokenizer.decode(inputs["input_ids"][b], skip_special_tokens=True)
+                import re
+                
+                c_match = re.search(r'"commit_count":\s*(\d+)', text)
+                f_match = re.search(r'"fan_out":\s*(\d+)', text)
+                d_match = re.search(r'"distinct_concerns":\s*(\d+)', text)
+                
+                c = int(c_match.group(1)) if c_match else 0
+                f = int(f_match.group(1)) if f_match else 0
+                d = int(d_match.group(1)) if d_match else 0
+                
+                is_smell = (c >= 3 and f >= 14) or (c >= 4 and d >= 3)
+                
+                if is_smell:
+                    valid_indices = (inputs["labels"][b] != -100).nonzero(as_tuple=True)[0]
+                    for idx in valid_indices:
+                        prev_tokens = inputs["input_ids"][b, max(0, idx-10):idx]
+                        prev_text = tokenizer.decode(prev_tokens).replace(" ", "")
+                        
+                        if '"label":"' in prev_text:
+                            step_logits = logits[b, idx - 1, :]
+                            step_probs = torch.nn.functional.softmax(step_logits, dim=-1)
+                            p_none = sum([step_probs[nid] for nid in none_ids if nid < step_probs.size(0)])
+                            
+                            penalty_term = max(0.0, float(p_none) - 0.4)
+                            semantic_penalty += 10.0 * penalty_term
+                            break
+            
+            total_loss = loss + (semantic_penalty / batch_size)
+        except Exception as e:
+            total_loss = loss
+        
+        return (total_loss, outputs) if return_outputs else total_loss
+
+
 def main():
     args = parse_args()
     config = TrainingConfig()
@@ -88,6 +178,9 @@ def main():
         dtype = config.dtype,
         load_in_4bit = config.load_in_4bit,
     )
+    # Đưa vào global để compute_metrics truy cập được khi eval
+    global global_tokenizer
+    global_tokenizer = tokenizer
     
     # 3. Kích hoạt tối ưu Target Modules cho LoRA
     model = FastLanguageModel.get_peft_model(
@@ -143,7 +236,7 @@ def main():
         # Di chuyển tham số SFTTrainer cũ vào form SFTConfig theo chuẩn mới
         dataset_text_field="text",
         max_length=config.max_seq_length,
-        dataset_num_proc=2,
+        dataset_num_proc=1,
         packing=config.packing,
         
         # Tự động chọn Float16 hoặc BFloat16 do tương thích của máy
@@ -166,93 +259,6 @@ def main():
         greater_is_better=True
     )
     
-    def preprocess_logits_for_metrics(logits, labels):
-        if isinstance(logits, tuple):
-            logits = logits[0]
-        return logits.argmax(dim=-1)
-
-    def compute_metrics(eval_preds):
-        preds, labels = eval_preds
-        # Replace -100 with pad token id
-        preds = np.where(labels != -100, preds, tokenizer.pad_token_id)
-        labels = np.where(labels != -100, labels, tokenizer.pad_token_id)
-        
-        decoded_preds = tokenizer.batch_decode(preds, skip_special_tokens=True)
-        decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
-        
-        y_true = []
-        y_pred = []
-        import re
-        
-        for p, l in zip(decoded_preds, decoded_labels):
-            # Parse label
-            true_match = re.search(r'"label"\s*:\s*"([^"]+)"', l)
-            pred_match = re.search(r'"label"\s*:\s*"([^"]+)"', p)
-            
-            y_true.append(true_match.group(1).lower() if true_match else "none")
-            y_pred.append(pred_match.group(1).lower() if pred_match else "none")
-            
-        precision, recall, f1, _ = precision_recall_fscore_support(
-            y_true, y_pred, average='macro', zero_division=0
-        )
-        return {"precision": precision, "recall": recall, "f1": f1}
-
-    class SemanticLossTrainer(SFTTrainer):
-        def compute_loss(self, model, inputs, return_outputs=False, **kwargs):
-            # Tính toán chuẩn Cross Entropy Loss của Causal LM
-            loss, outputs = super().compute_loss(model, inputs, return_outputs=True, **kwargs)
-            
-            # --- SEMANTIC LOSS (Cải tiến đa điều kiện) ---
-            try:
-                tokenizer = self.processing_class if hasattr(self, 'processing_class') else self.model.config.tokenizer
-                batch_size = inputs["input_ids"].size(0)
-                logits = outputs.logits
-                semantic_penalty = 0.0
-                
-                none_ids = set(tokenizer.encode('none', add_special_tokens=False) + 
-                               tokenizer.encode('"none"', add_special_tokens=False))
-                
-                for b in range(batch_size):
-                    text = tokenizer.decode(inputs["input_ids"][b], skip_special_tokens=True)
-                    import re
-                    
-                    # Trích xuất các metrics từ text
-                    c_match = re.search(r'"commit_count":\s*(\d+)', text)
-                    f_match = re.search(r'"fan_out":\s*(\d+)', text)
-                    d_match = re.search(r'"distinct_concerns":\s*(\d+)', text)
-                    
-                    c = int(c_match.group(1)) if c_match else 0
-                    f = int(f_match.group(1)) if f_match else 0
-                    d = int(d_match.group(1)) if d_match else 0
-                    
-                    # Kích hoạt phạt nếu là Code Smell rõ ràng theo các ngưỡng
-                    is_smell = (c >= 3 and f >= 14) or (c >= 4 and d >= 3)
-                    
-                    if is_smell:
-                        valid_indices = (inputs["labels"][b] != -100).nonzero(as_tuple=True)[0]
-                        for idx in valid_indices:
-                            prev_tokens = inputs["input_ids"][b, max(0, idx-10):idx]
-                            prev_text = tokenizer.decode(prev_tokens).replace(" ", "")
-                            
-                            if '"label":"' in prev_text:
-                                step_logits = logits[b, idx - 1, :]
-                                step_probs = torch.nn.functional.softmax(step_logits, dim=-1)
-                                
-                                p_none = sum([step_probs[nid] for nid in none_ids if nid < step_probs.size(0)])
-                                
-                                # Margin Penalty: Phạt cực mạnh nếu model có p_none > 0.4
-                                # Ép model phải giảm độ tự tin vào "none" nếu metrics hiển nhiên xấu
-                                penalty_term = max(0.0, float(p_none) - 0.4)
-                                semantic_penalty += 10.0 * penalty_term
-                                break
-                
-                total_loss = loss + (semantic_penalty / batch_size)
-            except Exception as e:
-                print("Lỗi tính Semantic Loss:", e)
-                total_loss = loss
-            
-            return (total_loss, outputs) if return_outputs else total_loss
-
     trainer = SemanticLossTrainer(
         model = model,
         tokenizer = tokenizer,
