@@ -148,6 +148,40 @@ def get_random_instruction():
 
 def augment_item(item):
     aug_item = copy.deepcopy(item)
+    
+    # --- Semantic Logic Enforcement (Counterfactual Sensitivity Regularization) ---
+    # Luật Logic: Nếu commit_count >= 4 và distinct_concerns >= 3 -> KHÔNG ĐƯỢC LÀ 'none'.
+    # Ta sẽ tạo ra dữ liệu đối nghịch (adversarial) để ép model học ranh giới logic này.
+    try:
+        input_data = json.loads(aug_item.get("input", "{}"))
+        out_data = json.loads(aug_item.get("output", "{}"))
+        
+        label = out_data.get("final_decision", {}).get("label", "none")
+        
+        # Với xác suất 30%, biến đổi một mẫu 'none' thành 'divergent_change' bằng cách vi phạm ngưỡng
+        if label == "none" and random.random() < 0.3:
+            # Tăng các features vượt ngưỡng
+            input_data["pre_computed"]["commit_count"] = random.randint(4, 10)
+            input_data["pre_computed"]["distinct_concerns"] = random.randint(3, 5)
+            input_data["pre_computed"]["complexity_delta"] = random.randint(1, 4)
+            
+            # Đổi nhãn đầu ra để phản ánh đúng logic
+            out_data["final_decision"]["label"] = "divergent_change"
+            out_data["final_decision"]["confidence"] = 0.85
+            out_data["final_decision"]["reasoning_chain"] = [
+                "[Metrics Base]: commit_count >= 4, distinct_concerns >= 3, complexity_delta > 0. All thresholds met.",
+                "[Semantic Deep-Dive]: CSR Augmented Sample to enforce logic boundaries.",
+                "[Conclusion]: divergent_change detected due to metrics violation."
+            ]
+            out_data["divergent_change"]["metrics_score"] = 1.0
+            out_data["divergent_change"]["final_smell_probability"] = 0.9
+            
+            aug_item["input"] = json.dumps(input_data, ensure_ascii=False)
+            aug_item["output"] = json.dumps(out_data, ensure_ascii=False)
+    except Exception:
+        pass
+    # -----------------------------------------------------------------------------
+
     aug_item["output"] = augment_output_json(aug_item.get("output", "{}"))
     aug_item["instruction"] = get_random_instruction()
 
