@@ -163,7 +163,23 @@ def main():
         metric_for_best_model="eval_loss"
     )
     
-    trainer = SFTTrainer(
+    class SemanticLossTrainer(SFTTrainer):
+        def compute_loss(self, model, inputs, return_outputs=False, **kwargs):
+            # Tính toán chuẩn Cross Entropy Loss
+            loss, outputs = super().compute_loss(model, inputs, return_outputs=True, **kwargs)
+            
+            # Thêm Logic Penalty / Semantic Loss (Ở đây dùng Entropy minimization làm proxy để ép model tự tin)
+            logits = outputs.logits
+            probs = torch.nn.functional.softmax(logits, dim=-1)
+            entropy = -torch.sum(probs * torch.log(probs + 1e-6), dim=-1).mean()
+            
+            # Phạt entropy cao (0.01 là hệ số alpha)
+            semantic_loss = 0.01 * entropy
+            total_loss = loss + semantic_loss
+            
+            return (total_loss, outputs) if return_outputs else total_loss
+
+    trainer = SemanticLossTrainer(
         model = model,
         tokenizer = tokenizer,
         train_dataset = train_dataset,
