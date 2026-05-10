@@ -1,2 +1,2 @@
-print("test")
+print("running on $output")
 
