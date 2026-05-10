@@ -1,8 +1,12 @@
-"method_name,project,length,clength,vocab,volume,difficulty,effort,time,bugs,code" #> "$output.csv"
+"Name,Project,Logical Lines,Distinct Operators,Distinct Operands,Total Operators,Total Operands,Vocabulary,Length,Calculated Length,Volume,Difficulty,Effort,Time Required,Bugs,Cyclomatic Complexity,Code" #> "$output.csv"
 
 cpg.method
     .filterNot(m => m.isExternal || m.name.startsWith("<"))
     .foreach { m =>
+        // Needs fixed. Currently Physical lines
+        val lloc = m.numberOfLines
+
+        // Verify correctness
         val operators = Metrics.CalcOperators(m)
         val n1 = operators.distinct.size
         val N1 = operators.size
@@ -23,6 +27,6 @@ cpg.method
 
         val bug = Metrics.EstimatedBugs(effort)
 
-        s"$${m.name},$output,$$length,$$clength,$$vocab,$$volume,$$difficulty,$$effort,$$time,$$bug,\"$${m.code}\"" #>> "$output.csv"
+        s"$${m.name},$output,$$lloc,$$n1,$$n2,$$N1,$$N2,$$vocab,$$length,$$clength,$$volume,$$difficulty,$$effort,$$time,$$bug,0,\"$${m.code}\"" #>> "$output.csv"
     }
 
