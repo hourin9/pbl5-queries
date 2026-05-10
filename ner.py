@@ -11,9 +11,8 @@ def main(query, args):
     print(result['success']);
 
     result = client.execute(query);
-    with open("joern.json", "w") as file:
-        output = result['stdout'];
-        file.write(output);
+    output = result['stdout'];
+    print(output);
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser();
