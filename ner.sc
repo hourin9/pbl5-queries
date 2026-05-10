@@ -3,24 +3,24 @@
 cpg.method
     .filterNot(m => m.isExternal || m.name.startsWith("<"))
     .foreach { m =>
-        val operators = m.ast.isCall.name.l
+        val operators = Metrics.CalcOperators(m)
         val n1 = operators.distinct.size
         val N1 = operators.size
 
-        val operands = m.ast.isIdentifier.name.l ++ m.ast.isLiteral.code.l
+        val operands = Metrics.CalcOperands(m)
         val n2 = operands.distinct.size
         val N2 = operands.size
 
         val length = N1 + N2
         val vocab = n1 + n2
 
-        val volume = if (vocab > 0) length * (Math.log(vocab) / Math.log(2)) else 0.0
-        val difficulty = if (n2 > 0) (n1.toDouble / 2.0) * (N2.toDouble / n2.toDouble) else 0.0
+        val volume = Metrics.Volume(vocab, length)
+        val difficulty = Metrics.Difficulty(n1, n2, N2)
         val effort = volume * difficulty
 
-        val time = effort.toDouble / 18
+        val time = Metrics.RequiredTime(effort)
 
-        val bug = Math.pow(effort, 2.0/3.0) / 3000.0
+        val bug = Metrics.EstimatedBugs(effort)
 
         s"$${m.name},$output,$$length,$$vocab,$$volume,$$difficulty,$$effort,$$time,$$bug,\"$${m.code}\"" #>> "$output.csv"
     }

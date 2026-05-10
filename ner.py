@@ -10,6 +10,16 @@ def main(query, args):
     result = client.execute(import_code_query(args.s));
     print(result['success']);
 
+    # Leave this here until I find a way to properly import
+    # a Scala file in the client Joern
+    with open("metrics.sc", "r") as f:
+        metrics = f.read();
+
+    query = f"""
+        {metrics}
+        {query}
+    """
+
     result = client.execute(query);
     output = result['stdout'];
     print(output);
