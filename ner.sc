@@ -1,4 +1,4 @@
-"method_name,project,length,vocab,volume,difficulty,effort,time,bugs,code" #> "$output.csv"
+"method_name,project,length,clength,vocab,volume,difficulty,effort,time,bugs,code" #> "$output.csv"
 
 cpg.method
     .filterNot(m => m.isExternal || m.name.startsWith("<"))
@@ -12,6 +12,7 @@ cpg.method
         val N2 = operands.size
 
         val length = N1 + N2
+        val clength = Metrics.CalculatedLength(n1, n2)
         val vocab = n1 + n2
 
         val volume = Metrics.Volume(vocab, length)
@@ -22,6 +23,6 @@ cpg.method
 
         val bug = Metrics.EstimatedBugs(effort)
 
-        s"$${m.name},$output,$$length,$$vocab,$$volume,$$difficulty,$$effort,$$time,$$bug,\"$${m.code}\"" #>> "$output.csv"
+        s"$${m.name},$output,$$length,$$clength,$$vocab,$$volume,$$difficulty,$$effort,$$time,$$bug,\"$${m.code}\"" #>> "$output.csv"
     }
 

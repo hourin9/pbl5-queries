@@ -1,9 +1,14 @@
 object Metrics {
+    private def _Log2(n: Double) = Math.log(n) / Math.log(2)
+
     def CalcOperators(m: Method) =
         m.ast.isCall.name.l
 
     def CalcOperands(m: Method) =
         m.ast.isIdentifier.name.l ++ m.ast.isLiteral.code.l
+
+    def CalculatedLength(n1: Int, n2: Int) =
+        n1 * _Log2(n1) + n2 * _Log2(n2)
 
     def Volume(vocab: Double,  length: Int) =
         if (vocab > 0)
