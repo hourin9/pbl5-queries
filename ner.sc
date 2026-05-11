@@ -27,6 +27,8 @@ cpg.method
 
         val bug = Metrics.EstimatedBugs(effort)
 
-        s"$${m.name},$output,$$lloc,$$n1,$$n2,$$N1,$$N2,$$vocab,$$length,$$clength,$$volume,$$difficulty,$$effort,$$time,$$bug,0,\"$${m.code}\"" #>> "$output.csv"
+        val cyccomp = Metrics.CyclomaticComp(m)
+
+        s"$${m.name},$output,$$lloc,$$n1,$$n2,$$N1,$$N2,$$vocab,$$length,$$clength,$$volume,$$difficulty,$$effort,$$time,$$bug,$$cyccomp,\"$${m.code}\"" #>> "$output.csv"
     }
 

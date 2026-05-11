@@ -1,11 +1,15 @@
 object Metrics {
     private def _Log2(n: Double) = Math.log(n) / Math.log(2)
 
+    // tbh I don't understand what the hell these 2 are
+
     def CalcOperators(m: Method) =
         m.ast.isCall.name.l
 
     def CalcOperands(m: Method) =
         m.ast.isIdentifier.name.l ++ m.ast.isLiteral.code.l
+
+    // https://en.wikipedia.org/wiki/Halstead_complexity_measures
 
     def CalculatedLength(n1: Int, n2: Int) =
         n1 * _Log2(n1) + n2 * _Log2(n2)
@@ -27,5 +31,9 @@ object Metrics {
 
     def EstimatedBugs(e: Double) =
         Math.pow(e, 2.0/3.0) / 3000.0
+
+    // https://github.com/joernio/joern/blob/master/querydb/README.md#adding-your-own-queries
+    def CyclomaticComp(m: Method) =
+        m.controlStructure.size
 }
 
