@@ -57,8 +57,30 @@ def sanitize_source(source):
     source = source.replace('\n', '').replace('\r', '');
     return source;
 
+# Not sanitizing code, but rather forcing it to fit the dataset's code
+def please_fucking_run(source):
+    source = re.sub(r'import .*;', '', source);
+
+    # Note: AI generated function
+    def replace_outside_strings(target, replacement, text):
+        pattern = r'("(?:\\.|[^"])*"|\'(?:\\.|[^\'])*\')|' + re.escape(target);
+        def handler(match):
+            if match.group(1):
+                return match.group(1);
+            return replacement;
+        return re.sub(pattern, handler, text);
+
+    # Bullshit lexer can't properly separate the dot for classes.
+    source = replace_outside_strings('.', ' . ', source);
+
+    # Same with this.
+    source = replace_outside_strings('@', ' @ ', source);
+
+    return source;
+
 def run_text(query):
     source = sys.stdin.read();
+    source = please_fucking_run(source);
     source = sanitize_source(source);
     print(source);
 
