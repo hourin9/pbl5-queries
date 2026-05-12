@@ -41,7 +41,7 @@ def run_text(query):
 
     with tempfile.TemporaryDirectory() as tmpdir:
         print("created temp dir ", tmpdir);
-        with open(f'{tmpdir}/source.c', 'w') as f:
+        with open(f'{tmpdir}/source.java', 'w') as f:
             f.write(source);
         output = guess_project_name(tmpdir);
         query = query.substitute(output=output);

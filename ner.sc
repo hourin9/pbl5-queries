@@ -1,17 +1,23 @@
 "Name,Project,Logical Lines,Distinct Operators,Distinct Operands,Total Operators,Total Operands,Vocabulary,Length,Calculated Length,Volume,Difficulty,Effort,Time Required,Bugs,Cyclomatic Complexity,Code" #> "$output.csv"
 
-cpg.method
-    .filterNot(m => m.isExternal || m.name.startsWith("<"))
-    .foreach { m =>
+cpg.typeDecl
+    .filterNot(t => t.isExternal)
+    .foreach { t =>
+        println(t.name)
+
         // Needs fixed. Currently Physical lines
-        val lloc = m.numberOfLines
+        val startingLine = t.lineNumber.getOrElse(0);
+        val endingLine = t.astMinusRoot.lineNumber.l.max
+        val lloc = endingLine - startingLine
 
         // Verify correctness
-        val operators = Metrics.CalcOperators(m)
+        val allMethods = t.method.l
+        val operators = allMethods.flatMap(Metrics.CalcOperators)
+        val operands = allMethods.flatMap(Metrics.CalcOperands)
+
         val n1 = operators.distinct.size
         val N1 = operators.size
 
-        val operands = Metrics.CalcOperands(m)
         val n2 = operands.distinct.size
         val N2 = operands.size
 
@@ -27,8 +33,8 @@ cpg.method
 
         val bug = Metrics.EstimatedBugs(effort)
 
-        val cyccomp = Metrics.CyclomaticComp(m)
+        val cyccomp = allMethods.map(Metrics.CyclomaticComp).sum
 
-        s"$${m.name},$output,$$lloc,$$n1,$$n2,$$N1,$$N2,$$vocab,$$length,$$clength,$$volume,$$difficulty,$$effort,$$time,$$bug,$$cyccomp,\"$${m.code}\"" #>> "$output.csv"
+        s"$${t.name},$output,$$lloc,$$n1,$$n2,$$N1,$$N2,$$vocab,$$length,$$clength,$$volume,$$difficulty,$$effort,$$time,$$bug,$$cyccomp,\"$${t.code}\"" #>> "$output.csv"
     }
 
