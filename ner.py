@@ -5,6 +5,7 @@ import argparse;
 from string import Template;
 from pathlib import Path;
 import tempfile;
+import re;
 
 from utils import coraline;
 
@@ -35,11 +36,31 @@ def run_once(query, args):
 
     run_query(query, args.s);
 
+def sanitize_source(source):
+    # Note: AI generated regex
+    # This regex matches:
+    # 1. Double-quoted strings: ".*?"
+    # 2. Single-quoted strings: '.*?'
+    # 3. Multi-line comments: /\*.*?\*/
+    # 4. Single-line comments: //.*? followed by \r or \n
+    pattern = r'("(?:\\.|[^"])*"|\'(?:\\.|[^\'])*\')|(/\*.*?\*/)|(//.*?(?:\r|\n|$))';
+
+    def chomp(match):
+        if match.group(1):
+            return match.group(1);
+        return "";
+
+    # Step 1 & 2: Remove comments while protecting strings
+    source = re.sub(pattern, chomp, source, flags=re.DOTALL);
+
+    # Step 3: Remove remaining newlines
+    source = source.replace('\n', '').replace('\r', '');
+    return source;
+
 def run_text(query):
-    source = "";
-    for line in sys.stdin:
-        line = line.strip();
-        source += line;
+    source = sys.stdin.read();
+    source = sanitize_source(source);
+    print(source);
 
     코럴라인 = coraline.analyze_code_sample(source);
     print(코럴라인);
