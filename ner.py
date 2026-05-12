@@ -1,8 +1,10 @@
+import os
 import sys;
-from cpgqls_client import CPGQLSClient, import_code_query, workspace_query;
+from cpgqls_client import CPGQLSClient, import_code_query;
 import argparse;
 from string import Template;
 from pathlib import Path;
+import tempfile;
 
 def guess_project_name(path):
     return Path(path).name;
@@ -31,6 +33,20 @@ def run_once(query, args):
 
     run_query(query, args.s);
 
+def run_text(query):
+    source = "";
+    for line in sys.stdin:
+        line = line.strip();
+        source += line;
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        print("created temp dir ", tmpdir);
+        with open(f'{tmpdir}/source.c', 'w') as f:
+            f.write(source);
+        output = guess_project_name(tmpdir);
+        query = query.substitute(output=output);
+        run_query(query, tmpdir)
+
 def run_many(query):
     for line in sys.stdin:
         line = line.strip();
@@ -46,6 +62,11 @@ if __name__ == "__main__":
         help="enable continous mode",
         action="store_true"
     );
+    parser.add_argument(
+        "-t",
+        help="parse code snippet",
+        action="store_true"
+    );
     args = parser.parse_args();
 
     server = "localhost:8000";
@@ -54,7 +75,9 @@ if __name__ == "__main__":
     with open("ner.sc", "r") as file:
         template = Template(file.read());
 
-        if args.c:
+        if args.t:
+            run_text(template);
+        elif args.c:
             run_many(template);
         elif args.s != None:
             run_once(template, args);
