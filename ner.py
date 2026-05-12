@@ -1,10 +1,12 @@
-import os
+import os;
 import sys;
 from cpgqls_client import CPGQLSClient, import_code_query;
 import argparse;
 from string import Template;
 from pathlib import Path;
 import tempfile;
+
+from utils import coraline;
 
 def guess_project_name(path):
     return Path(path).name;
@@ -39,13 +41,8 @@ def run_text(query):
         line = line.strip();
         source += line;
 
-    with tempfile.TemporaryDirectory() as tmpdir:
-        print("created temp dir ", tmpdir);
-        with open(f'{tmpdir}/source.java', 'w') as f:
-            f.write(source);
-        output = guess_project_name(tmpdir);
-        query = query.substitute(output=output);
-        run_query(query, tmpdir)
+    코럴라인 = coraline.analyze_code_sample(source);
+    print(코럴라인);
 
 def run_many(query):
     for line in sys.stdin:
@@ -83,3 +80,4 @@ if __name__ == "__main__":
             run_once(template, args);
         else:
             print("nothing to do. use -h for help.");
+
