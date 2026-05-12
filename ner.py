@@ -82,7 +82,7 @@ def run_text(query):
     source = sys.stdin.read();
     source = please_fucking_run(source);
     source = sanitize_source(source);
-    print(source);
+    # print(source);
 
     코럴라인 = coraline.analyze_code_sample(source);
     print(코럴라인);

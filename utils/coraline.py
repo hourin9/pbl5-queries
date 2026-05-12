@@ -41,7 +41,7 @@ def halstead_metrics(code):
         elif token_type in (Token.Name, Token.Literal.Number, Token.Literal.String):
             operands.append(value)
 
-    print("operands: ", operands);
+    # print("operands: ", operands);
 
     # Distinct operators and operands
     distinct_operators = len(set(operators))
