@@ -32,16 +32,8 @@ def run_query(query, source):
     output = result['stdout'];
     print(output);
 
-# Run Joern query with source path.
-# NOTE: unused after changing to Lexer analysis.
-def run_once(query, args):
-    output = guess_project_name(args.s);
-    query = query.substitute(output=output);
-
-    run_query(query, args.s);
-
 def sanitize_source(source):
-    # Note: AI generated regex
+    # NOTE: AI generated regex
     # This regex matches:
     # 1. Double-quoted strings: ".*?"
     # 2. Single-quoted strings: '.*?'
@@ -65,7 +57,7 @@ def sanitize_source(source):
 def please_fucking_run(source):
     source = re.sub(r'import .*;', '', source);
 
-    # Note: AI generated function
+    # NOTE: AI generated function
     def replace_outside_strings(target, replacement, text):
         pattern = r'("(?:\\.|[^"])*"|\'(?:\\.|[^\'])*\')|' + re.escape(target);
         def handler(match):
@@ -82,8 +74,7 @@ def please_fucking_run(source):
 
     return source;
 
-def run_text(query):
-    source = sys.stdin.read();
+def run_text(source):
     source = please_fucking_run(source);
     source = sanitize_source(source);
     # print(source);
@@ -91,6 +82,16 @@ def run_text(query):
     # Returns dict[str, Number]
     코럴라인 = coraline.analyze_code_sample(source);
     print(코럴라인);
+
+# Run Coraline analysis with path to source code file.
+def run_once(query, args):
+    del query;
+    with open(args.s) as file:
+        source = file.read();
+        return run_text(source);
+
+def run_dir(args):
+    pass
 
 # Run Joern query with source path.
 # NOTE: unused after changing to Lexer analysis.
@@ -123,7 +124,8 @@ if __name__ == "__main__":
         template = Template(file.read());
 
         if args.t:
-            run_text(template);
+            source = sys.stdin.read();
+            run_text(source);
         elif args.c:
             run_many(template);
         elif args.s != None:
