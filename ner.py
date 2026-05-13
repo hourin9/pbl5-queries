@@ -6,6 +6,7 @@ from string import Template;
 from pathlib import Path;
 import tempfile;
 import re;
+import glob;
 
 from utils import coraline;
 
@@ -84,14 +85,18 @@ def run_text(source):
     print(코럴라인);
 
 # Run Coraline analysis with path to source code file.
-def run_once(query, args):
-    del query;
-    with open(args.s) as file:
+def run_once(path):
+    with open(path) as file:
         source = file.read();
         return run_text(source);
 
-def run_dir(args):
-    pass
+def run_dir(path):
+    result_list = [str, any]
+    source_list = glob.glob(f"{path}/**/*.java", recursive=True);
+    for source in source_list:
+        result = run_once(source);
+        result_list += [source, result];
+    return result_list;
 
 # Run Joern query with source path.
 # NOTE: unused after changing to Lexer analysis.
@@ -105,11 +110,7 @@ def run_many(query):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser();
     parser.add_argument("-s", help="source code path");
-    parser.add_argument(
-        "-c",
-        help="enable continous mode",
-        action="store_true"
-    );
+    parser.add_argument( "-d", help="find and parse entire directory");
     parser.add_argument(
         "-t",
         help="parse code snippet",
@@ -126,10 +127,10 @@ if __name__ == "__main__":
         if args.t:
             source = sys.stdin.read();
             run_text(source);
-        elif args.c:
-            run_many(template);
+        elif args.d:
+            run_dir(args.d);
         elif args.s != None:
-            run_once(template, args);
+            run_once(args.s);
         else:
             print("nothing to do. use -h for help.");
 
