@@ -12,6 +12,8 @@ from utils import coraline;
 def guess_project_name(path):
     return Path(path).name;
 
+# Run Joern query with source path.
+# NOTE: unused after changing to Lexer analysis.
 def run_query(query, source):
     result = client.execute(import_code_query(source));
     print(result['success']);
@@ -30,6 +32,8 @@ def run_query(query, source):
     output = result['stdout'];
     print(output);
 
+# Run Joern query with source path.
+# NOTE: unused after changing to Lexer analysis.
 def run_once(query, args):
     output = guess_project_name(args.s);
     query = query.substitute(output=output);
@@ -87,6 +91,8 @@ def run_text(query):
     코럴라인 = coraline.analyze_code_sample(source);
     print(코럴라인);
 
+# Run Joern query with source path.
+# NOTE: unused after changing to Lexer analysis.
 def run_many(query):
     for line in sys.stdin:
         line = line.strip();
