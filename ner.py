@@ -88,6 +88,7 @@ def run_text(query):
     source = sanitize_source(source);
     # print(source);
 
+    # Returns dict[str, Number]
     코럴라인 = coraline.analyze_code_sample(source);
     print(코럴라인);
 
