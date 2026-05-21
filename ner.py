@@ -109,11 +109,11 @@ def run_dir(path) -> list[tuple[str, Any]]:
 
     return result_list;
 
-def run_git(repo) -> list[tuple[str, Any]]:
+def run_git(repo) -> tuple[str, list[tuple[str, Any]]]:
     for commit in Repository(repo, order="reverse").traverse_commits():
         path = commit.project_path;
-        return run_dir(path);
-    return [];
+        return (guess_project_name(path), run_dir(path));
+    return ("",[]);
 
 # Run Joern query with source path.
 # NOTE: unused after changing to Lexer analysis.
@@ -125,7 +125,7 @@ def run_many(query):
         run_query(query, line);
 
 import csv;
-def export_csv(entries: list[tuple[str, Any]]):
+def export_csv(entries: list[tuple[str, Any]], project="unknown"):
     if not entries:
         print("empty metrics list");
         return;
@@ -139,7 +139,7 @@ def export_csv(entries: list[tuple[str, Any]]):
         for path, entry in entries:
             row = entry.copy();
             row["File"] = path;
-            row["Project"] = "unknown";
+            row["Project"] = project;
             writer.writerow(row);
 
 if __name__ == "__main__":
@@ -168,8 +168,8 @@ if __name__ == "__main__":
         elif args.s != None:
             run_once(args.s);
         elif args.r != None:
-            result = run_git(args.r);
-            export_csv(result);
+            project, result = run_git(args.r);
+            export_csv(result, project);
         else:
             print("nothing to do. use -h for help.");
 
