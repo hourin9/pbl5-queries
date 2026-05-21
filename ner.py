@@ -1,5 +1,6 @@
 import os;
-import sys;
+import sys
+from typing import Any;
 from cpgqls_client import CPGQLSClient, import_code_query;
 import argparse;
 from string import Template;
@@ -84,6 +85,7 @@ def run_text(source):
     # Returns dict[str, Number]
     코럴라인 = coraline.analyze_code_sample(source);
     print(코럴라인);
+    return 코럴라인;
 
 # Run Coraline analysis with path to source code file.
 def run_once(path):
@@ -91,18 +93,19 @@ def run_once(path):
         source = file.read();
         return run_text(source);
 
-def run_dir(path):
-    result_list = [str, any]
+def run_dir(path) -> list[tuple[str, Any]]:
+    result_list = []
     source_list = glob.glob(f"{path}/**/*.java", recursive=True);
     for source in source_list:
         result = run_once(source);
-        result_list += [source, result];
+        result_list.append((source, result));
     return result_list;
 
-def run_git(repo):
+def run_git(repo) -> list[tuple[str, Any]]:
     for commit in Repository(repo, order="reverse").traverse_commits():
         path = commit.project_path;
         return run_dir(path);
+    return [];
 
 # Run Joern query with source path.
 # NOTE: unused after changing to Lexer analysis.
@@ -112,6 +115,24 @@ def run_many(query):
         output = guess_project_name(line);
         query = template.substitute(output=output);
         run_query(query, line);
+
+import csv;
+def export_csv(entries: list[tuple[str, Any]]):
+    if not entries:
+        print("empty metrics list");
+        return;
+
+    with open("csv.csv", mode="w") as f:
+        first = entries[0][1];
+        fields = ["File", "Project"] + list(first.keys());
+        writer = csv.DictWriter(f, fieldnames=fields);
+        writer.writeheader();
+
+        for path, entry in entries:
+            row = entry.copy();
+            row["File"] = path;
+            row["Project"] = "unknown";
+            writer.writerow(row);
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser();
@@ -139,7 +160,8 @@ if __name__ == "__main__":
         elif args.s != None:
             run_once(args.s);
         elif args.r != None:
-            run_git(args.r);
+            result = run_git(args.r);
+            export_csv(result);
         else:
             print("nothing to do. use -h for help.");
 
