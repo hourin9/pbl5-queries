@@ -1,7 +1,7 @@
 import re;
 
 # NOTE: AI-generated code
-def extract_classes(file_path):
+def extract_classes(file_path) -> list[tuple[str, str]]:
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -12,16 +12,15 @@ def extract_classes(file_path):
         print(f"Error reading file: {e}")
         return []
 
-    # Regex to match class declarations (including visibility modifiers, abstract, final, etc.)
-    # It looks for the word 'class' followed by the class name and opening brace
     class_decl_regex = re.compile(
-        r'(?:(?:public|protected|private|static|abstract|final)\s+)*class\s+\w+(?:\s+extends\s+\w+)?(?:\s+implements\s+\w+(?:\s*,\s*\w+)*)?\s*\{'
+        r'(?:(?:public|protected|private|static|abstract|final)\s+)*class\s+(\w+)(?:\s+extends\s+\w+)?(?:\s+implements\s+\w+(?:\s*,\s*\w+)*)?\s*\{'
     )
 
     classes_found = []
 
-    # Iterate through all matches of class declarations
     for match in class_decl_regex.finditer(content):
+        class_name = match.group(1)
+
         start_idx = match.start()
         brace_start_idx = match.end() - 1  # Position of the opening '{'
 
@@ -37,11 +36,11 @@ def extract_classes(file_path):
                 brace_count -= 1
             current_idx += 1
 
-        # If braces match successfully, extract the full block
         if brace_count == 0:
             end_idx = current_idx
             class_code = content[start_idx:end_idx]
-            classes_found.append(class_code)
+            # Append as a tuple: (name, code)
+            classes_found.append((class_name, class_code))
 
     return classes_found
 
