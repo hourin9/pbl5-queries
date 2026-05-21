@@ -138,7 +138,7 @@ def export_csv(entries: list[tuple[str, Any]], project="unknown"):
 
         for path, entry in entries:
             row = entry.copy();
-            row["File"] = path;
+            row["File"] = f"\"{path}\"";
             row["Project"] = project;
             writer.writerow(row);
 
