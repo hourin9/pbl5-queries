@@ -94,11 +94,19 @@ def run_once(path):
         return run_text(source);
 
 def run_dir(path) -> list[tuple[str, Any]]:
-    result_list = []
-    source_list = glob.glob(f"{path}/**/*.java", recursive=True);
-    for source in source_list:
-        result = run_once(source);
-        result_list.append((source, result));
+    result_list = [];
+    orig_dir = os.getcwd();
+
+    try:
+        os.chdir(path);
+        source_list = glob.glob("./**/*.java", recursive=True);
+        for source in source_list:
+            clean_source = os.path.normpath(source);
+            result = run_once(clean_source);
+            result_list.append((clean_source, result));
+    finally:
+        os.chdir(orig_dir);
+
     return result_list;
 
 def run_git(repo) -> list[tuple[str, Any]]:
