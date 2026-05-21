@@ -10,7 +10,7 @@ import re;
 import glob;
 from pydriller import Repository;
 
-from utils import coraline;
+from utils import bihyung, coraline;
 
 def guess_project_name(path):
     return Path(path).name;
@@ -84,7 +84,7 @@ def run_text(source):
 
     # Returns dict[str, Number]
     코럴라인 = coraline.analyze_code_sample(source);
-    print(코럴라인);
+    # print(코럴라인);
     return 코럴라인;
 
 # Run Coraline analysis with path to source code file.
@@ -102,6 +102,8 @@ def run_dir(path) -> list[tuple[str, Any]]:
         source_list = glob.glob("./**/*.java", recursive=True);
         for source in source_list:
             clean_source = os.path.normpath(source);
+            비형 = bihyung.extract_classes(clean_source);
+            print((clean_source, 비형));
             result = run_once(clean_source);
             result_list.append((clean_source, result));
     finally:
