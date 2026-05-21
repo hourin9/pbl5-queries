@@ -7,6 +7,7 @@ from pathlib import Path;
 import tempfile;
 import re;
 import glob;
+from pydriller import Repository;
 
 from utils import coraline;
 
@@ -98,6 +99,11 @@ def run_dir(path):
         result_list += [source, result];
     return result_list;
 
+def run_git(repo):
+    for commit in Repository(repo, order="reverse").traverse_commits():
+        path = commit.project_path;
+        return run_dir(path);
+
 # Run Joern query with source path.
 # NOTE: unused after changing to Lexer analysis.
 def run_many(query):
@@ -110,7 +116,8 @@ def run_many(query):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser();
     parser.add_argument("-s", help="source code path");
-    parser.add_argument( "-d", help="find and parse entire directory");
+    parser.add_argument("-d", help="find and parse entire directory");
+    parser.add_argument("-r", help="git repository");
     parser.add_argument(
         "-t",
         help="parse code snippet",
@@ -131,6 +138,8 @@ if __name__ == "__main__":
             run_dir(args.d);
         elif args.s != None:
             run_once(args.s);
+        elif args.r != None:
+            run_git(args.r);
         else:
             print("nothing to do. use -h for help.");
 
