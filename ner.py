@@ -91,7 +91,14 @@ def run_text(source):
 def run_once(path):
     with open(path) as file:
         source = file.read();
-        return run_text(source);
+        비형 = bihyung.extract_classes(source);
+        result_list = [];
+        for classname, source in 비형:
+            result = run_text(source);
+            result["Code"] = sanitize_source(source);
+            result["Class"] = classname;
+            result_list.append(result);
+        return result_list;
 
 def run_dir(path) -> list[tuple[str, Any]]:
     result_list = [];
@@ -102,10 +109,8 @@ def run_dir(path) -> list[tuple[str, Any]]:
         source_list = glob.glob("./**/*.java", recursive=True);
         for source in source_list:
             clean_source = os.path.normpath(source);
-            비형 = bihyung.extract_classes(clean_source);
-            print((clean_source, 비형));
-            result = run_once(clean_source);
-            result_list.append((clean_source, result));
+            for result in run_once(clean_source):
+                result_list.append((clean_source, result));
     finally:
         os.chdir(orig_dir);
 

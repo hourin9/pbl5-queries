@@ -1,17 +1,7 @@
 import re;
 
 # NOTE: AI-generated code
-def extract_classes(file_path) -> list[tuple[str, str]]:
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read()
-    except FileNotFoundError:
-        print(f"Error: The file '{file_path}' was not found.")
-        return []
-    except Exception as e:
-        print(f"Error reading file: {e}")
-        return []
-
+def extract_classes(content) -> list[tuple[str, str]]:
     class_decl_regex = re.compile(
         r'(?:(?:public|protected|private|static|abstract|final)\s+)*class\s+(\w+)(?:\s+extends\s+\w+)?(?:\s+implements\s+\w+(?:\s*,\s*\w+)*)?\s*\{'
     )
