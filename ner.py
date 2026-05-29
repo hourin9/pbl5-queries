@@ -1,7 +1,6 @@
 import os;
 import sys
 from typing import Any;
-from cpgqls_client import CPGQLSClient, import_code_query;
 import argparse;
 from string import Template;
 from pathlib import Path;
@@ -14,26 +13,6 @@ from utils import bihyung, coraline;
 
 def guess_project_name(path):
     return Path(path).name;
-
-# Run Joern query with source path.
-# NOTE: unused after changing to Lexer analysis.
-def run_query(query, source):
-    result = client.execute(import_code_query(source));
-    print(result['success']);
-
-    # Leave this here until I find a way to properly import
-    # a Scala file in the client Joern
-    with open("metrics.sc", "r") as f:
-        metrics = f.read();
-
-    query = f"""
-        {metrics}
-        {query}
-    """
-
-    result = client.execute(query);
-    output = result['stdout'];
-    print(output);
 
 def sanitize_source(source):
     # NOTE: AI generated regex
@@ -122,15 +101,6 @@ def run_git(repo) -> tuple[str, list[tuple[str, Any]]]:
         return (guess_project_name(path), run_dir(path));
     return ("",[]);
 
-# Run Joern query with source path.
-# NOTE: unused after changing to Lexer analysis.
-def run_many(query):
-    for line in sys.stdin:
-        line = line.strip();
-        output = guess_project_name(line);
-        query = template.substitute(output=output);
-        run_query(query, line);
-
 import csv;
 def export_csv(entries: list[tuple[str, Any]], project="unknown"):
     if not entries:
@@ -160,9 +130,6 @@ if __name__ == "__main__":
         action="store_true"
     );
     args = parser.parse_args();
-
-    server = "localhost:8000";
-    client = CPGQLSClient(server);
 
     with open("ner.sc", "r") as file:
         template = Template(file.read());
