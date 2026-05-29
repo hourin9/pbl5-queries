@@ -136,11 +136,11 @@ if __name__ == "__main__":
 
         if args.t:
             source = sys.stdin.read();
-            run_text(source);
+            print(run_text(source));
         elif args.d:
-            run_dir(args.d);
+            print(run_dir(args.d));
         elif args.s != None:
-            run_once(args.s);
+            print(run_once(args.s));
         elif args.r != None:
             project, result = run_git(args.r);
             export_csv(result, project);
